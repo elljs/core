@@ -1,0 +1,65 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"ignore": ["node_modules/**", "dist/**", "build/**"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"suspicious": {
+				"noExplicitAny": "off",
+				"noAsyncPromiseExecutor": "off",
+				"noAssignInExpressions": "off"
+			},
+			"style": {
+				"noUselessElse": "off",
+				"useImportType": "off",
+				"noParameterAssign": "off",
+				"noInferrableTypes": "off",
+				"noNonNullAssertion": "off",
+				"useNodejsImportProtocol": "off"
+			},
+			"performance": {
+				"noAccumulatingSpread": "off"
+			},
+			"complexity": {
+				"noThisInStatic": "off",
+				"noBannedTypes": "off",
+				"noForEach": "off"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "off",
+				"noConstructorReturn": "off"
+			},
+			"a11y": {
+				"useKeyWithClickEvents": "off",
+				"noSvgWithoutTitle": "off",
+				"useButtonType": "off",
+				"useValidAnchor": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double",
+			"semicolons": "always"
+		},
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
+		}
+	}
+}

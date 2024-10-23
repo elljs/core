@@ -1,0 +1,25 @@
+{
+	"name": "@elljs/monorepo",
+	"version": "0.0.1",
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"build": "pnpm --filter \"./packages/**\" run build",
+		"clean": "pnpm --filter=@hikestack/* run clean",
+		"format": "pnpm biome format --write .",
+		"cs": "changeset"
+	},
+	"workspaces": ["apps/*", "packages/*"],
+	"devDependencies": {
+		"@biomejs/biome": "1.9.3",
+		"@changesets/cli": "^2.27.8",
+		"autocannon": "^7.15.0",
+		"commitizen": "^4.3.0",
+		"cz-conventional-changelog": "^3.3.0",
+		"rimraf": "^6.0.1"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	}
+}
