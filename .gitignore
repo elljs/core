@@ -35,3 +35,6 @@ env/*
 **/env/**
 
 .vscode
+
+apps/*
+!apps/docs/

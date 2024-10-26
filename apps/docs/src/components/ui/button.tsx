@@ -21,36 +21,45 @@ const buttonVariants = tv({
 			sm: "h-9 rounded-md px-3",
 			lg: "h-11 rounded-md px-8",
 			icon: "h-10 w-10",
-		},
+		}
 	},
 	defaultVariants: {
 		variant: "default",
-		size: "default",
+		size: "default"
 	},
 });
 
 export interface ButtonProps
 	extends React.PropsWithChildren<AriaButtonOptions<"button">> {
 	className?: ClassValue;
-	styles?: VariantProps<typeof buttonVariants>;
+	variants?: VariantProps<typeof buttonVariants>;
 	isLoading?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ children, className, styles, isLoading, ...props }: ButtonProps, externalRef) => {
-	const internalRef = React.useRef<HTMLButtonElement>(null);
-	const ref = externalRef || internalRef;
-	const { buttonProps } = useButton({ isDisabled: isLoading, ...props }, ref as React.RefObject<HTMLButtonElement>);
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+	(
+		{ children, className, variants, isLoading, ...props }: ButtonProps,
+		externalRef,
+	) => {
+		const internalRef = React.useRef<HTMLButtonElement>(null);
+		const ref = externalRef || internalRef;
+		const { buttonProps } = useButton(
+			{ isDisabled: isLoading, ...props },
+			ref as React.RefObject<HTMLButtonElement>,
+		);
 
-	return (
-		<button
-			ref={ref}
-			className={buttonVariants({ ...styles, className })}
-			{...buttonProps}
-		>
-			{isLoading && <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />}{children}
-		</button>
-	);
-});
+		return (
+			<button
+				ref={ref}
+				className={buttonVariants({ ...variants, className })}
+				{...buttonProps}
+			>
+				{isLoading && <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />}
+				{children}
+			</button>
+		);
+	},
+);
 
 Button.displayName = "Button";
 

@@ -80,35 +80,43 @@ const App = () => {
 			</Card>
 			<Card className="flex space-x-2 p-4">
 				<Button>Primary</Button>
-				<Button styles={{ variant: "secondary" }}>Secondary</Button>
-				<Button styles={{ variant: "destructive" }}>Destructive</Button>
-				<Button styles={{ variant: "ghost" }}>Ghost</Button>
-				<Button styles={{ variant: "outline" }}>Outline</Button>
-				<Button styles={{ variant: "link" }}>Link</Button>
+				<Button variants={{ variant: "secondary" }}>Secondary</Button>
+				<Button variants={{ variant: "destructive" }}>Destructive</Button>
+				<Button variants={{ variant: "ghost" }}>Ghost</Button>
+				<Button variants={{ variant: "outline" }}>Outline</Button>
+				<Button variants={{ variant: "link" }}>Link</Button>
 			</Card>
 			<Card className="flex space-x-2 p-4">
-				<Button styles={{ size: "sm" }}>Primary</Button>
-				<Button styles={{ variant: "secondary", size: "sm" }}>Secondary</Button>
-				<Button styles={{ variant: "destructive", size: "sm" }}>Destructive</Button>
-				<Button styles={{ variant: "ghost", size: "sm" }}>Ghost</Button>
-				<Button styles={{ variant: "outline", size: "sm" }}>Outline</Button>
-				<Button styles={{ variant: "link", size: "sm" }}>Link</Button>
+				<Button variants={{ size: "sm" }}>Primary</Button>
+				<Button variants={{ variant: "secondary", size: "sm" }}>Secondary</Button>
+				<Button variants={{ variant: "destructive", size: "sm" }}>
+					Destructive
+				</Button>
+				<Button variants={{ variant: "ghost", size: "sm" }}>Ghost</Button>
+				<Button variants={{ variant: "outline", size: "sm" }}>Outline</Button>
+				<Button variants={{ variant: "link", size: "sm" }}>Link</Button>
 			</Card>
 			<Card className="flex space-x-2 p-4">
-				<Button styles={{ size: "lg" }}>Primary</Button>
-				<Button styles={{ variant: "secondary", size: "lg" }}>Secondary</Button>
-				<Button styles={{ variant: "destructive", size: "lg" }}>Destructive</Button>
-				<Button styles={{ variant: "ghost", size: "lg" }}>Ghost</Button>
-				<Button styles={{ variant: "outline", size: "lg" }}>Outline</Button>
-				<Button styles={{ variant: "link", size: "lg" }}>Link</Button>
+				<Button variants={{ size: "lg" }}>Primary</Button>
+				<Button variants={{ variant: "secondary", size: "lg" }}>Secondary</Button>
+				<Button variants={{ variant: "destructive", size: "lg" }}>
+					Destructive
+				</Button>
+				<Button variants={{ variant: "ghost", size: "lg" }}>Ghost</Button>
+				<Button variants={{ variant: "outline", size: "lg" }}>Outline</Button>
+				<Button variants={{ variant: "link", size: "lg" }}>Link</Button>
 			</Card>
 			<Card className="flex space-x-2 p-4">
-				<Button styles={{ size: "icon" }}>Primary</Button>
-				<Button styles={{ variant: "secondary", size: "icon" }}>Secondary</Button>
-				<Button styles={{ variant: "destructive", size: "icon" }}>Destructive</Button>
-				<Button styles={{ variant: "ghost", size: "icon" }}>Ghost</Button>
-				<Button styles={{ variant: "outline", size: "icon" }}>Outline</Button>
-				<Button styles={{ variant: "link", size: "icon" }}>Link</Button>
+				<Button variants={{ size: "icon" }}>Primary</Button>
+				<Button variants={{ variant: "secondary", size: "icon" }}>
+					Secondary
+				</Button>
+				<Button variants={{ variant: "destructive", size: "icon" }}>
+					Destructive
+				</Button>
+				<Button variants={{ variant: "ghost", size: "icon" }}>Ghost</Button>
+				<Button variants={{ variant: "outline", size: "icon" }}>Outline</Button>
+				<Button variants={{ variant: "link", size: "icon" }}>Link</Button>
 			</Card>
 			<Test components={{ Code }} />
 		</div>

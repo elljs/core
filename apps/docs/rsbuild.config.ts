@@ -25,17 +25,6 @@ export default defineConfig({
 			root: "dist",
 		},
 	},
-	server: {
-		host: "0.0.0.0",
-		port: 8888,
-		proxy: {
-			"/api": {
-				target: process.env.PUBLIC_API_URL,
-				changeOrigin: true,
-			},
-		},
-		open: false,
-	},
 	plugins: [
 		pluginMdx({
 			mdxLoaderOptions: {
