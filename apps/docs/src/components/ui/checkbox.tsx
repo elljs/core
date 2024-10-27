@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { AriaCheckboxProps, VisuallyHidden, useCheckbox } from "react-aria";
 import { useToggleState } from 'react-stately';
 import { ClassValue, VariantProps, tv } from "tailwind-variants";

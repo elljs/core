@@ -31,6 +31,7 @@ const buttonVariants = tv({
 
 export interface ButtonProps
 	extends React.PropsWithChildren<AriaButtonOptions<"button">> {
+	slot?: string;
 	className?: ClassValue;
 	variants?: VariantProps<typeof buttonVariants>;
 	isLoading?: boolean;

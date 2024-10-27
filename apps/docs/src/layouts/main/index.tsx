@@ -3,6 +3,10 @@ import { useOutlet } from "react-router-dom";
 import Header from "./components/header";
 import UserInfo from "./components/user-info";
 import { Home } from "lucide-react";
+import { AccordionGroup } from "@/components/ui/accordion-group";
+import { Accordion } from "@/components/ui/accordion";
+import { AccordionItem } from "@/components/ui/accordion-item";
+import { Button } from "react-aria-components";
 
 const MainLayout = () => {
     const outlet = useOutlet();
@@ -12,7 +16,7 @@ const MainLayout = () => {
                 <SidebarHeader>
                 </SidebarHeader>
                 <SidebarContent>
-                    <SidebarGroup label="main">
+                    {/* <SidebarGroup label="main">
                         <SidebarMenu>
                             <SidebarMenuItem icon={<Home className="w-5 h-5" />} label="Home" />
                             <SidebarMenuItem icon={<Home className="w-5 h-5" />} label="Home" />
@@ -55,7 +59,22 @@ const MainLayout = () => {
                             <SidebarMenuItem icon={<Home className="w-5 h-5" />} label="Home" />
                             <SidebarMenuItem icon={<Home className="w-5 h-5" />} label="Home" />
                         </SidebarMenu>
-                    </SidebarGroup>
+                    </SidebarGroup> */}
+                    <AccordionGroup>
+                        <Accordion>
+                            <AccordionItem>
+                                <p>Personal information form here.</p>
+                            </AccordionItem>
+                            <h3>
+                                <Button slot="trigger">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                    </svg>
+                                    Personal Information
+                                </Button>
+                            </h3>
+                        </Accordion>
+                    </AccordionGroup>
                 </SidebarContent>
                 <SidebarFooter>
                     <UserInfo />

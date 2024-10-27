@@ -37,4 +37,4 @@ env/*
 .vscode
 
 apps/*
-!apps/docs/
+!apps/admin/
