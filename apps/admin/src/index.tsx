@@ -1,6 +1,7 @@
 import "./index.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
@@ -10,7 +11,9 @@ if (rootEl) {
 	const root = ReactDOM.createRoot(rootEl);
 	root.render(
 		<ThemeProvider>
-			<RouterProvider router={router} />
+			<TooltipProvider>
+				<RouterProvider router={router} />
+			</TooltipProvider>
 		</ThemeProvider>
 	);
 }
