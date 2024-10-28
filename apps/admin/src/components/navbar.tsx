@@ -1,8 +1,10 @@
+import { Button } from "@/components/ui/button";
+import { ContextMenu, ContextMenuContent, ContextMenuItem } from "@/components/ui/context-menu";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
+import { ContextMenuTrigger } from "@radix-ui/react-context-menu";
 import { Home, X } from "lucide-react";
 import React from "react";
-import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
 
 type NavbarContext = {
     current: string;
@@ -93,13 +95,23 @@ Navbar.diplayName = "Navbar";
 function NavbarItem({ className, closeable = true }: React.HTMLAttributes<HTMLAnchorElement> & { closeable?: boolean }) {
 
     return (
-        <a className={cn("flex items-center cursor-pointer space-x-2 px-2 py-1 rounded-md bg-sidebar text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground", className)}>
-            <Home className="w-4 h-4" />
-            <span className="text-sm">Home</span>
-            {closeable && <Button className="w-4 h-4 hover:bg-sidebar-primary hover:text-sidebar-primary-foreground" size="icon" variant="ghost">
-                <X />
-            </Button>}
-        </a>
+        <ContextMenu>
+            <ContextMenuTrigger>
+                <a className={cn("flex items-center cursor-pointer space-x-2 px-2 py-1 rounded-md bg-sidebar text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground", className)}>
+                    <Home className="w-4 h-4" />
+                    <span className="text-sm">Home</span>
+                    {closeable && <Button className="w-4 h-4 hover:bg-sidebar-primary hover:text-sidebar-primary-foreground" size="icon" variant="ghost">
+                        <X />
+                    </Button>}
+                </a>
+            </ContextMenuTrigger>
+            <ContextMenuContent>
+                <ContextMenuItem>Profile</ContextMenuItem>
+                <ContextMenuItem>Billing</ContextMenuItem>
+                <ContextMenuItem>Team</ContextMenuItem>
+                <ContextMenuItem>Subscription</ContextMenuItem>
+            </ContextMenuContent>
+        </ContextMenu>
     )
 }
 

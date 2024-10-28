@@ -13,7 +13,7 @@ export default function MainLayout() {
                 <NavbarProvider>
                     <NavHeader />
                 </NavbarProvider>
-                <main className="flex-1 p-3 bg-background">
+                <main className="flex-1 p-3 bg-secondary">
                     {outlet}
                 </main>
             </div>
