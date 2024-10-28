@@ -1,4 +1,15 @@
-import * as React from "react"
+import { Button } from "@/components/ui/button"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar
+} from "@/components/ui/sidebar"
 import {
   BookOpen,
   Bot,
@@ -6,29 +17,17 @@ import {
   ChevronRight,
   Command,
   Frame,
-  LifeBuoy,
+  LayoutDashboard,
   Map,
   PieChart,
-  Send,
+  Settings,
   Settings2,
-  SquareTerminal,
+  SquareTerminal
 } from "lucide-react"
-
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "@/components/ui/sidebar"
-import { Button } from "./ui/button"
+import * as React from "react"
+import { Link } from "react-router-dom"
+import { NavMain } from "./nav-main"
+import { NavUser } from "./nav-user"
 
 const data = {
   user: {
@@ -123,18 +122,6 @@ const data = {
       ],
     },
   ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
   projects: [
     {
       name: "Design Engineering",
@@ -155,7 +142,7 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { open, toggleSidebar } = useSidebar()
+  const { open, toggleSidebar } = useSidebar();
 
   return (
     <Sidebar variant="sidebar" collapsible="icon" {...props}>
@@ -171,8 +158,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Command className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                  <span className="truncate font-semibold">Ell Admin</span>
+                  <span className="truncate text-xs">运营管理系统</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -180,12 +167,34 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
+        <SidebarGroup className="pb-0">
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton className="bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" asChild tooltip="总览">
+                <Link to="/">
+                  <LayoutDashboard />
+                  <span>总览</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <SidebarGroup className="pt-0">
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild tooltip="设置">
+                <Link to="/setting">
+                  <Settings />
+                  <span>设置</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   )

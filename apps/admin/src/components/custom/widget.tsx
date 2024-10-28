@@ -11,7 +11,7 @@ export function Widget({ className, title, extra, children }: WidgetProps) {
     return (
         <div className={cn("flex flex-col w-full h-full rounded-lg border bg-card text-card-foreground shadow-sm", className)}>
             <div className="flex flex-row justify-between items-center w-full p-2">
-                <div className="flex items-center before:content-[''] before:rounded-lg before:inline-block before:items-center before:bg-foreground before:h-[18px] before:w-1 before:mr-1">
+                <div className="flex items-center before:content-[''] before:rounded-lg before:inline-block before:items-center before:bg-primary before:h-[18px] before:w-1 before:mr-1">
                     {title}
                 </div>
                 <div className="mt-0">

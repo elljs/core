@@ -7,7 +7,7 @@ export default function Home() {
 	return <div className="h-[2000px]">
 		<div className="flex justify-between items-center">
 			<h1 className="text-xl font-bold">
-				Home
+				Setting
 			</h1>
 			<div>
 				<Breadcrumb>

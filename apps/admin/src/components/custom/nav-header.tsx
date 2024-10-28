@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useFullscreen } from 'ahooks';
-import { Ellipsis, Expand, Moon, Shrink, Sun } from "lucide-react";
+import { Ellipsis, Expand, Minus, Moon, RefreshCw, Shrink, Sun, X } from "lucide-react";
 import { Navbar, NavbarItem } from "./navbar";
 import { useTheme } from "./theme-provider";
 
@@ -22,11 +22,28 @@ export function NavHeader() {
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuItem>Close current</DropdownMenuItem>
-                        <DropdownMenuItem>Close others</DropdownMenuItem>
-                        <DropdownMenuItem>Close all</DropdownMenuItem>
+                        <DropdownMenuItem>
+                            <X />
+                            <span>关闭当前标签页</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                            <Minus />
+                            <span>关闭全部标签页</span>
+                        </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <Button className="h-7 w-7 text-sidebar-accent-foreground bg-sidebar-accent hover:bg-sidebar-primary hover:text-sidebar-primary-foreground" size="icon" onClick={() => {
+
+                        }}>
+                            <RefreshCw />
+                        </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        刷新当前标签页
+                    </TooltipContent>
+                </Tooltip>
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button className="h-7 w-7 text-sidebar-accent-foreground bg-sidebar-accent hover:bg-sidebar-primary hover:text-sidebar-primary-foreground" size="icon" onClick={() => toggleFullscreen()}>
@@ -34,7 +51,7 @@ export function NavHeader() {
                         </Button>
                     </TooltipTrigger>
                     <TooltipContent>
-                        Toggle full screen
+                        {isFullscreen ? '退出全屏' : '进入全屏'}
                     </TooltipContent>
                 </Tooltip>
                 <Tooltip>
@@ -44,7 +61,7 @@ export function NavHeader() {
                         </Button>
                     </TooltipTrigger>
                     <TooltipContent>
-                        Toggle theme
+                        {theme === 'dark' ? '亮色主题' : '暗色主题'}
                     </TooltipContent>
                 </Tooltip>
             </div>

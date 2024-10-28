@@ -18,6 +18,12 @@ const router = createBrowserRouter([
 					Component: (await import("@/pages/home")).default,
 				}),
 			},
+			{
+				path: 'setting',
+				lazy: async () => ({
+					Component: (await import("@/pages/setting")).default,
+				}),
+			},
 		],
 	},
 ]);

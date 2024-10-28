@@ -1,6 +1,6 @@
 import "./index.css";
 
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/custom/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";

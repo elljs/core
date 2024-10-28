@@ -1,11 +1,11 @@
-import { AppSidebar } from "@/components/app-sidebar";
-import { NavHeader } from "@/components/nav-header";
-import { NavbarProvider } from "@/components/navbar";
+import { AppSidebar } from "@/components/custom/app-sidebar";
+import { NavHeader } from "@/components/custom/nav-header";
+import { NavbarProvider } from "@/components/custom/navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { useOutlet } from "react-router-dom";
+import { KeepAliveRouteOutlet } from "keepalive-for-react";
 
 export default function MainLayout() {
-    const outlet = useOutlet();
+
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -14,7 +14,7 @@ export default function MainLayout() {
                     <NavHeader />
                 </NavbarProvider>
                 <main className="flex-1 p-3 bg-secondary">
-                    {outlet}
+                    <KeepAliveRouteOutlet transition />
                 </main>
             </div>
         </SidebarProvider>

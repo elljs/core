@@ -11,6 +11,7 @@
 		"format": "pnpm biome format --write ."
 	},
 	"dependencies": {
+		"@radix-ui/react-alert-dialog": "^1.1.2",
 		"@radix-ui/react-avatar": "^1.1.1",
 		"@radix-ui/react-collapsible": "^1.1.1",
 		"@radix-ui/react-context-menu": "^2.2.2",
@@ -25,11 +26,13 @@
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"codehike": "^1.0.4",
+		"keepalive-for-react": "^3.0.1",
 		"lucide-react": "^0.453.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"react-router-dom": "^6.27.0",
-		"tailwind-merge": "^2.5.4"
+		"tailwind-merge": "^2.5.4",
+		"valtio": "^2.1.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.3",
