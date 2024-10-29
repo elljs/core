@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 export default function Home() {
 	return <Page header="首页" extra={<div>xxx</div>}>
-		<div className="flex flex-col mt-4">
+		<div className="flex flex-col mt-2">
 			<div className="grid grid-cols-6 gap-2">
 				<div className="">
 					<Widget title="销量" extra="xxx">
