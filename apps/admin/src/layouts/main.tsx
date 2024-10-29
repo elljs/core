@@ -9,7 +9,7 @@ export default function MainLayout() {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <div className="w-full h-screen overflow-x-hidden">
+            <div className="w-full h-screen overflow-x-hidden bg-accent text-accent-foreground">
                 <NavbarProvider>
                     <NavHeader />
                 </NavbarProvider>

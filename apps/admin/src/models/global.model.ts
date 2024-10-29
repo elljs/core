@@ -16,7 +16,7 @@ const actions = {
 	},
 
 	login: async () => {
-
+		window.location.href = '/';
 	},
 	logout: async () => {
 		window.location.href = '/login';

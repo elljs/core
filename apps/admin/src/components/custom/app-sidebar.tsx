@@ -10,22 +10,22 @@ import {
   SidebarMenuItem,
   useSidebar
 } from "@/components/ui/sidebar"
+import constants from "@/constants"
 import {
   BookOpen,
   Bot,
   ChevronLeft,
   ChevronRight,
-  Command,
   Frame,
   LayoutDashboard,
   Map,
   PieChart,
-  Settings,
   Settings2,
   SquareTerminal
 } from "lucide-react"
 import * as React from "react"
 import { Link } from "react-router-dom"
+import { Logo } from "./logo"
 import { NavMain } from "./nav-main"
 import { NavUser } from "./nav-user"
 
@@ -123,7 +123,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar variant="sidebar" collapsible="icon" {...props}>
-      <Button className="absolute top-[50%] -right-4 w-8 h-8 rounded-full text-sidebar-accent-foreground bg-sidebar-accent hover:bg-sidebar-primary hover:text-sidebar-primary-foreground" size="icon" onClick={toggleSidebar}>
+      <Button className="absolute top-[50%] -right-4 w-8 h-8 rounded-full text-foreground bg-background hover:bg-primary hover:text-primary-foreground" size="icon" onClick={toggleSidebar}>
         {open ? <ChevronLeft /> : <ChevronRight />}
       </Button>
       <SidebarHeader>
@@ -131,12 +131,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <Command className="size-4" />
-                </div>
+                <Logo />
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Ell Admin</span>
-                  <span className="truncate text-xs">运营管理系统</span>
+                  <span className="truncate font-semibold">{constants.name}</span>
+                  <span className="truncate text-xs">{constants.description}</span>
                 </div>
               </a>
             </SidebarMenuButton>

@@ -32,6 +32,7 @@
 		"react-dom": "^18.3.1",
 		"react-router-dom": "^6.27.0",
 		"tailwind-merge": "^2.5.4",
+		"tailwind-variants": "^0.2.1",
 		"valtio": "^2.1.1"
 	},
 	"devDependencies": {

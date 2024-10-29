@@ -2,5 +2,6 @@ const isDev = process.env.NODE_ENV === "development";
 
 export default {
 	isDev,
-	name: 'elljs'
+	name: 'Ell Admin',
+	description: '运营管理系统',
 };

@@ -1,7 +1,8 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
+const { withTV } = require("tailwind-variants/transformer");
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = withTV({
 	darkMode: ["class"],
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,md,mdx}"],
 	theme: {
@@ -96,4 +97,4 @@ module.exports = {
 		},
 	},
 	plugins: [require("tailwindcss-animate")],
-};
+});

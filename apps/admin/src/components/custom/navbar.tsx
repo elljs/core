@@ -97,35 +97,35 @@ function NavbarItem({ className, closeable = true }: React.HTMLAttributes<HTMLAn
     return (
         <ContextMenu>
             <ContextMenuTrigger>
-                <a className={cn("flex items-center cursor-pointer space-x-2 px-2 py-1 rounded-md bg-sidebar text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground", className)}>
-                    <Home className="w-4 h-4" />
+                <a className={cn("flex items-center cursor-pointer space-x-2 px-2 py-1 rounded-md bg-background text-foreground hover:bg-accent hover:text-accent-foreground", className)}>
+                    <Home className="size-4" />
                     <span className="text-sm">Home</span>
-                    {closeable && <Button className="w-4 h-4 hover:bg-sidebar-primary hover:text-sidebar-primary-foreground" size="icon" variant="ghost">
+                    {closeable && <Button className="size-4 hover:bg-primary hover:text-primary-foreground" size="icon" variant="ghost">
                         <X />
                     </Button>}
                 </a>
             </ContextMenuTrigger>
             <ContextMenuContent>
                 <ContextMenuItem>
-                    <RefreshCw className="w-4 h-4" />
+                    <RefreshCw className="size-4" />
                     <span className="ml-1">刷新当前标签页</span>
                 </ContextMenuItem>
                 <ContextMenuSeparator className="w-full h-[1px] bg-border" />
                 <ContextMenuItem>
-                    <ArrowLeftToLine className="w-4 h-4" />
+                    <ArrowLeftToLine className="size-4" />
                     <span className="ml-1">关闭左侧标签页</span>
                 </ContextMenuItem>
                 <ContextMenuItem>
-                    <ArrowRightToLine className="w-4 h-4" />
+                    <ArrowRightToLine className="size-4" />
                     <span className="ml-1">关闭右侧标签页</span>
                 </ContextMenuItem>
                 <ContextMenuSeparator className="w-full h-[1px] bg-border" />
                 <ContextMenuItem>
-                    <X className="w-4 h-4" />
+                    <X className="size-4" />
                     <span className="ml-1">关闭其他标签页</span>
                 </ContextMenuItem>
                 <ContextMenuItem>
-                    <Minus className="w-4 h-4" />
+                    <Minus className="size-4" />
                     <span className="ml-1">关闭全部标签页</span>
                 </ContextMenuItem>
             </ContextMenuContent>
