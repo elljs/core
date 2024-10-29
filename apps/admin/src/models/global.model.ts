@@ -2,7 +2,11 @@ import { defer } from "react-router-dom";
 import { proxy } from "valtio";
 
 const state = proxy<{ user: any }>({
-	user: {},
+	user: {
+		name: "Roy Lin",
+		email: "admin@elljs.com",
+		avatar: "https://avatars.githubusercontent.com/u/19965768?v=4"
+	},
 });
 
 const actions = {

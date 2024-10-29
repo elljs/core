@@ -4,13 +4,14 @@ import {
   CreditCard,
   LogOut,
   User
-} from "lucide-react"
+} from "lucide-react";
 
+import { useModal } from "@/components/custom/modal-provider";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/avatar"
+} from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,18 +20,19 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
-import globalModel from "@/models/global.model"
-import { useSnapshot } from "valtio"
+} from "@/components/ui/sidebar";
+import globalModel from "@/models/global.model";
+import { useSnapshot } from "valtio";
 
 export function NavUser() {
   const { user } = useSnapshot(globalModel.state);
+  const { alert, dialog } = useModal();
   const { isMobile } = useSidebar();
 
   return (
@@ -75,19 +77,24 @@ export function NavUser() {
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <User />
-                账户
+                资料
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <CreditCard />
                 账单
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => dialog({ title: '暂未开放', description: '敬请期待' })}>
                 <Bell />
                 通知
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => alert({
+              title: '确定要退出登录吗?',
+              onConfirm: () => {
+                globalModel.logout();
+              }
+            })}>
               <LogOut />
               退出登录
             </DropdownMenuItem>

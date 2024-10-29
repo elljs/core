@@ -108,25 +108,25 @@ function NavbarItem({ className, closeable = true }: React.HTMLAttributes<HTMLAn
             <ContextMenuContent>
                 <ContextMenuItem>
                     <RefreshCw className="w-4 h-4" />
-                    <span className="text-xs ml-1">刷新当前标签页</span>
+                    <span className="ml-1">刷新当前标签页</span>
                 </ContextMenuItem>
                 <ContextMenuSeparator className="w-full h-[1px] bg-border" />
                 <ContextMenuItem>
                     <ArrowLeftToLine className="w-4 h-4" />
-                    <span className="text-xs ml-1">关闭左侧标签页</span>
+                    <span className="ml-1">关闭左侧标签页</span>
                 </ContextMenuItem>
                 <ContextMenuItem>
                     <ArrowRightToLine className="w-4 h-4" />
-                    <span className="text-xs ml-1">关闭右侧标签页</span>
+                    <span className="ml-1">关闭右侧标签页</span>
                 </ContextMenuItem>
                 <ContextMenuSeparator className="w-full h-[1px] bg-border" />
                 <ContextMenuItem>
                     <X className="w-4 h-4" />
-                    <span className="text-xs ml-1">关闭其他标签页</span>
+                    <span className="ml-1">关闭其他标签页</span>
                 </ContextMenuItem>
                 <ContextMenuItem>
                     <Minus className="w-4 h-4" />
-                    <span className="text-xs ml-1">关闭全部标签页</span>
+                    <span className="ml-1">关闭全部标签页</span>
                 </ContextMenuItem>
             </ContextMenuContent>
         </ContextMenu>
@@ -136,7 +136,9 @@ function NavbarItem({ className, closeable = true }: React.HTMLAttributes<HTMLAn
 NavbarItem.displayName = "NavbarItem";
 
 export {
-    Navbar, NavbarItem, NavbarProvider,
+    Navbar,
+    NavbarItem,
+    NavbarProvider,
     useNavbar
 };
 

@@ -23,11 +23,11 @@ export function NavHeader() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuItem>
-                            <X />
+                            <X className="w-4 h-4" />
                             <span>关闭当前标签页</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
-                            <Minus />
+                            <Minus className="w-4 h-4" />
                             <span>关闭全部标签页</span>
                         </DropdownMenuItem>
                     </DropdownMenuContent>

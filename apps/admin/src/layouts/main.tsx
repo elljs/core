@@ -13,7 +13,7 @@ export default function MainLayout() {
                 <NavbarProvider>
                     <NavHeader />
                 </NavbarProvider>
-                <main className="flex-1 p-3 bg-secondary">
+                <main className="flex-1">
                     <KeepAliveRouteOutlet transition />
                 </main>
             </div>
