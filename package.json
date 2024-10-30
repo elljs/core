@@ -4,7 +4,7 @@
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
 		"build": "pnpm --filter \"./packages/**\" run build",
-		"clean": "pnpm --filter=@hikestack/* run clean",
+		"clean": "pnpm --filter=@elljs/* run clean",
 		"format": "pnpm biome format --write .",
 		"cs": "changeset"
 	},

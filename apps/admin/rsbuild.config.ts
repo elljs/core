@@ -13,6 +13,7 @@ const chConfig = {
 
 export default defineConfig({
 	html: {
+		favicon: path.join(__dirname, "public/logo.svg"),
 		template: path.join(__dirname, "index.html"),
 	},
 	source: {
@@ -21,6 +22,7 @@ export default defineConfig({
 		},
 	},
 	output: {
+		assetPrefix: "/core/",
 		distPath: {
 			root: "dist",
 		},

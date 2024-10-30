@@ -14,6 +14,7 @@ import { useFullscreen } from "ahooks";
 import {
 	Ellipsis,
 	Expand,
+	LayoutDashboard,
 	Minus,
 	Moon,
 	RefreshCw,
@@ -30,7 +31,7 @@ export function NavHeader() {
 
 	return (
 		<header className="sticky top-0 flex items-center justify-between h-12 p-3 shadow-sm border-b bg-sidebar text-sidebar-foreground">
-			<NavbarItem className="mr-1" closeable={false} />
+			<NavbarItem className="mr-1" isActive closeable={false} icon={<LayoutDashboard className="size-4" />} title="总览" />
 			<Navbar />
 			<div className="flex justify-end items-center space-x-2 ml-4">
 				<DropdownMenu>
@@ -58,7 +59,7 @@ export function NavHeader() {
 						<Button
 							className="size-7 text-accent-foreground bg-accent hover:bg-primary hover:text-primary-foreground"
 							size="icon"
-							onClick={() => {}}
+							onClick={() => { }}
 						>
 							<RefreshCw />
 						</Button>

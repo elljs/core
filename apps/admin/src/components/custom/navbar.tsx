@@ -13,10 +13,10 @@ import {
 import {
 	ArrowLeftToLine,
 	ArrowRightToLine,
-	Home,
 	Minus,
 	RefreshCw,
-	X,
+	User,
+	X
 } from "lucide-react";
 import React from "react";
 
@@ -45,7 +45,7 @@ const NavbarProvider = ({
 	const contextValue = React.useMemo<NavbarContext>(
 		() => ({
 			current: defaultNav ?? "/",
-			closeAll: () => {},
+			closeAll: () => { },
 		}),
 		[defaultNav],
 	);
@@ -61,45 +61,9 @@ NavbarProvider.displayName = "NavbarProvider";
 
 function Navbar() {
 	return (
-		<ScrollArea>
+		<ScrollArea className="w-full">
 			<nav className="flex flex-1 items-center space-x-1 h-12 overflow-auto">
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
-				<NavbarItem />
+				<NavbarItem icon={<User className="size-4" />} title="客户管理" />
 			</nav>
 			<ScrollBar orientation="horizontal" />
 		</ScrollArea>
@@ -110,19 +74,23 @@ Navbar.diplayName = "Navbar";
 
 function NavbarItem({
 	className,
+	icon,
+	title,
+	isActive = false,
 	closeable = true,
-}: React.HTMLAttributes<HTMLAnchorElement> & { closeable?: boolean }) {
+}: React.HTMLAttributes<HTMLAnchorElement> & { icon: React.ReactNode, title: string, isActive?: boolean, closeable?: boolean }) {
 	return (
 		<ContextMenu>
 			<ContextMenuTrigger>
 				<a
 					className={cn(
-						"flex items-center cursor-pointer space-x-2 px-2 py-1 rounded-md bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+						"flex items-center cursor-pointer space-x-2 px-2 py-1 rounded-md bg-background text-foreground hover:bg-accent hover:text-accent-foreground min-w-[80px]",
+						isActive && "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
 						className,
 					)}
 				>
-					<Home className="size-4" />
-					<span className="text-sm">Home</span>
+					{icon}
+					<span className="text-sm">{title}</span>
 					{closeable && (
 						<Button
 							className="size-4 hover:bg-primary hover:text-primary-foreground"
