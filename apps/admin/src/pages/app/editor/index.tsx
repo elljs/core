@@ -1,5 +1,5 @@
 import { Page } from "@/components/custom/page";
-import { MinimalTiptapEditor } from "@/components/ui/minimal-tiptap";
+import { MinimalTiptapEditor } from "@/components/custom/minimal-tiptap";
 import { Content } from "@tiptap/core";
 import { useReactive } from "ahooks";
 

@@ -22,6 +22,7 @@ import {
 	ResizablePanelGroup,
 } from "@/components/ui/resizable"
 import { ScrollArea } from "@/components/ui/scroll-area";
+import ComingSoon from "@/components/custom/coming-soon";
 
 // This is sample data.
 const data = {
@@ -74,7 +75,7 @@ export default function FileManager() {
 				<ResizablePanel defaultSize={20} minSize={10}>
 					<ScrollArea className="h-full overflow-auto">
 						<SidebarGroup>
-							<SidebarGroupLabel>Changes</SidebarGroupLabel>
+							<SidebarGroupLabel>变更</SidebarGroupLabel>
 							<SidebarGroupContent>
 								<SidebarMenu>
 									{data.changes.map((item, index) => (
@@ -90,7 +91,7 @@ export default function FileManager() {
 							</SidebarGroupContent>
 						</SidebarGroup>
 						<SidebarGroup>
-							<SidebarGroupLabel>Files</SidebarGroupLabel>
+							<SidebarGroupLabel>文件</SidebarGroupLabel>
 							<SidebarGroupContent>
 								<SidebarMenu>
 									{data.tree.map((item, index) => (
@@ -103,7 +104,7 @@ export default function FileManager() {
 				</ResizablePanel>
 				<ResizableHandle withHandle />
 				<ResizablePanel minSize={50} className="p-2">
-					Content
+					<ComingSoon />
 				</ResizablePanel>
 			</ResizablePanelGroup>
 		</Page >

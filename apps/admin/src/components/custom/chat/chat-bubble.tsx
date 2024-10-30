@@ -1,9 +1,9 @@
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button, ButtonProps } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { type VariantProps, cva } from "class-variance-authority";
+import * as React from "react";
 import MessageLoading from "./message-loading";
-import { Button, ButtonProps } from "../button";
 
 // ChatBubble
 const chatBubbleVariant = cva(
@@ -28,7 +28,7 @@ const chatBubbleVariant = cva(
 
 interface ChatBubbleProps
 	extends React.HTMLAttributes<HTMLDivElement>,
-		VariantProps<typeof chatBubbleVariant> {}
+	VariantProps<typeof chatBubbleVariant> { }
 
 const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
 	({ className, variant, layout, children, ...props }, ref) => (
@@ -43,9 +43,9 @@ const ChatBubble = React.forwardRef<HTMLDivElement, ChatBubbleProps>(
 			{React.Children.map(children, (child) =>
 				React.isValidElement(child) && typeof child.type !== "string"
 					? React.cloneElement(child, {
-							variant,
-							layout,
-						} as React.ComponentProps<typeof child.type>)
+						variant,
+						layout,
+					} as React.ComponentProps<typeof child.type>)
 					: child,
 			)}
 		</div>
@@ -92,7 +92,7 @@ const chatBubbleMessageVariants = cva("p-4", {
 
 interface ChatBubbleMessageProps
 	extends React.HTMLAttributes<HTMLDivElement>,
-		VariantProps<typeof chatBubbleMessageVariants> {
+	VariantProps<typeof chatBubbleMessageVariants> {
 	isLoading?: boolean;
 }
 

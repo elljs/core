@@ -11,9 +11,9 @@ import {
 	ChatBubbleAction,
 	ChatBubbleAvatar,
 	ChatBubbleMessage,
-} from "@/components/ui/chat/chat-bubble";
-import { ChatInput } from "@/components/ui/chat/chat-input";
-import { ChatMessageList } from "@/components/ui/chat/chat-message-list";
+} from "@/components/custom/chat/chat-bubble";
+import { ChatInput } from "@/components/custom/chat/chat-input";
+import { ChatMessageList } from "@/components/custom/chat/chat-message-list";
 import {
 	Command,
 	CommandEmpty,
@@ -153,9 +153,9 @@ export default function AI() {
 														onClick={() =>
 															console.log(
 																"Action " +
-																	type +
-																	" clicked for message " +
-																	index,
+																type +
+																" clicked for message " +
+																index,
 															)
 														}
 													/>
