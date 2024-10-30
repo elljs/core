@@ -19,43 +19,49 @@ const router = createBrowserRouter([
 				}),
 			},
 			{
-				path: 'app',
+				path: "app",
 				children: [
 					{
-						path: 'editor',
+						path: "editor",
 						lazy: async () => ({
 							Component: (await import("@/pages/app/editor")).default,
-						})
+						}),
 					},
 					{
-						path: 'bot',
+						path: "file-manager",
+						lazy: async () => ({
+							Component: (await import("@/pages/app/file-manager")).default,
+						}),
+					},
+					{
+						path: "bot",
 						lazy: async () => ({
 							Component: (await import("@/pages/app/bot")).default,
-						})
-					}
-				]
+						}),
+					},
+				],
 			},
 			{
-				path: 'operation',
+				path: "operation",
 				children: [
 					{
-						path: 'customer',
+						path: "customer",
 						lazy: async () => ({
 							Component: (await import("@/pages/operation/customer")).default,
 						}),
-					}
-				]
+					},
+				],
 			},
 			{
-				path: 'setting',
+				path: "setting",
 				children: [
 					{
-						path: 'platform',
+						path: "platform",
 						lazy: async () => ({
 							Component: (await import("@/pages/setting/platform")).default,
 						}),
-					}
-				]
+					},
+				],
 			},
 		],
 	},

@@ -5,7 +5,7 @@ const state = proxy<{ user: any }>({
 	user: {
 		name: "Roy Lin",
 		email: "admin@elljs.com",
-		avatar: "https://avatars.githubusercontent.com/u/19965768?v=4"
+		avatar: "https://avatars.githubusercontent.com/u/19965768?v=4",
 	},
 });
 
@@ -16,10 +16,10 @@ const actions = {
 	},
 
 	login: async () => {
-		window.location.href = '/';
+		window.location.href = "/";
 	},
 	logout: async () => {
-		window.location.href = '/login';
+		window.location.href = "/login";
 	},
 };
 

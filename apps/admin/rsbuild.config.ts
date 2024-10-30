@@ -26,7 +26,7 @@ export default defineConfig({
 		},
 	},
 	server: {
-		port: 8888
+		port: 8888,
 	},
 	plugins: [
 		pluginMdx({
@@ -37,5 +37,5 @@ export default defineConfig({
 			},
 		}),
 		pluginReact(),
-	]
+	],
 });

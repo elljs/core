@@ -83,12 +83,11 @@
 
 	body {
 		@apply bg-accent text-accent-foreground;
-		font-feature-settings: "rlig"1, "calt"1;
+		font-feature-settings: "rlig" 1, "calt" 1;
 	}
 }
 
 @layer utilities {
-
 	.h-layout {
 		height: calc(100vh - 3rem);
 	}

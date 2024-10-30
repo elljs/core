@@ -17,6 +17,6 @@ if (rootEl) {
 					<RouterProvider router={router} />
 				</TooltipProvider>
 			</ModalProvider>
-		</ThemeProvider>
+		</ThemeProvider>,
 	);
 }
