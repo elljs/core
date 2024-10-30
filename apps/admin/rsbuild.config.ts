@@ -22,7 +22,7 @@ export default defineConfig({
 		},
 	},
 	output: {
-		assetPrefix: "/core/",
+		assetPrefix: "/admin/",
 		distPath: {
 			root: "dist",
 		},
