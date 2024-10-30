@@ -20,9 +20,9 @@ interface PageProps extends React.HTMLAttributes<HTMLDivElement>, React.PropsWit
 
 const Page = ({ header, extra = <div />, className, children }: PageProps) => {
     return (
-        <div className={cn("p-3", className)}>
+        <div className={cn("h-full p-3", className)}>
             <div className="flex justify-between items-center">
-                <PageHeader>{header}</PageHeader>
+                <PageHeader className="m-2">{header}</PageHeader>
                 {extra}
             </div>
             {children}

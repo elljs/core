@@ -4,6 +4,7 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -12,113 +13,67 @@ import {
 } from "@/components/ui/sidebar"
 import constants from "@/constants"
 import {
-  BookOpen,
   Bot,
   ChevronLeft,
   ChevronRight,
-  Frame,
+  FilePenLine,
   LayoutDashboard,
-  Map,
-  PieChart,
   Settings2,
-  SquareTerminal
+  User2
 } from "lucide-react"
 import * as React from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { Logo } from "./logo"
-import { NavMain } from "./nav-main"
 import { NavUser } from "./nav-user"
 
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+const menus = [
+  {
+    name: "总览",
+    url: "/",
+    icon: LayoutDashboard,
   },
-  navMain: [
-    {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-}
+  {
+    name: "运营",
+    url: "/operation",
+    items: [
+      {
+        name: "客户管理",
+        url: "/operation/customer",
+        icon: User2,
+      }
+    ]
+  },
+  {
+    name: "应用",
+    url: '/app',
+    items: [
+      {
+        name: "文本编辑器",
+        url: '/app/editor',
+        icon: FilePenLine
+      },
+      {
+        name: "聊天机器人",
+        url: '/app/bot',
+        icon: Bot
+      }
+    ]
+  },
+  {
+    name: "系统",
+    url: "/setting",
+    items: [
+      {
+        name: "平台设置",
+        url: "/setting/platform",
+        icon: Settings2,
+      },
+    ]
+  }
+]
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { pathname } = useLocation();
   const { open, toggleSidebar } = useSidebar();
 
   return (
@@ -130,7 +85,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <a href="/">
                 <Logo />
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{constants.name}</span>
@@ -142,35 +97,54 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup className="pb-0">
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton className="bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" asChild tooltip="总览">
-                <Link to="/">
-                  <LayoutDashboard />
-                  <span>总览</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-        <NavMain items={data.navMain} />
-        <SidebarGroup className="pt-0">
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip="设置">
-                <Link to="/setting">
-                  <Settings2 />
-                  <span>设置</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
+        {menus.map(({ icon: Icon, ...item }) => {
+          if (item.items && item.items.length > 0) {
+            return (
+              <SidebarGroup
+                key={item.url}
+              >
+                <SidebarGroupLabel>{item.name}</SidebarGroupLabel>
+                <SidebarMenu >
+                  {item.items.map(({ icon: Icon, ...item }) => (
+                    <SidebarMenuItem key={item.url}>
+                      <SidebarMenuButton className={
+                        pathname === item.url ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""
+                      } asChild tooltip={item.name}>
+                        <Link to={item.url}>
+                          {Icon && <Icon />}
+                          <span>{item.name}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroup>
+            );
+          }
+          return (
+            <SidebarGroup
+              key={item.url}
+            >
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton className={
+                    pathname === item.url ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : ""
+                  } asChild tooltip={item.name}>
+                    <Link to={item.url}>
+                      {Icon && <Icon />}
+                      <span>{item.name}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroup>
+          )
+        })}
+
       </SidebarContent>
       <SidebarFooter>
         <NavUser />
       </SidebarFooter>
-    </Sidebar>
+    </Sidebar >
   )
 }

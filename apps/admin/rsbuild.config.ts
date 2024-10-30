@@ -37,5 +37,5 @@ export default defineConfig({
 			},
 		}),
 		pluginReact(),
-	],
+	]
 });

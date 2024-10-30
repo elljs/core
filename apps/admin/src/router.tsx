@@ -1,5 +1,5 @@
-import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "@/layouts/main";
+import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
 	{
@@ -19,10 +19,43 @@ const router = createBrowserRouter([
 				}),
 			},
 			{
+				path: 'app',
+				children: [
+					{
+						path: 'editor',
+						lazy: async () => ({
+							Component: (await import("@/pages/app/editor")).default,
+						})
+					},
+					{
+						path: 'bot',
+						lazy: async () => ({
+							Component: (await import("@/pages/app/bot")).default,
+						})
+					}
+				]
+			},
+			{
+				path: 'operation',
+				children: [
+					{
+						path: 'customer',
+						lazy: async () => ({
+							Component: (await import("@/pages/operation/customer")).default,
+						}),
+					}
+				]
+			},
+			{
 				path: 'setting',
-				lazy: async () => ({
-					Component: (await import("@/pages/setting")).default,
-				}),
+				children: [
+					{
+						path: 'platform',
+						lazy: async () => ({
+							Component: (await import("@/pages/setting/platform")).default,
+						}),
+					}
+				]
 			},
 		],
 	},
