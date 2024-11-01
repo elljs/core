@@ -16,5 +16,5 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true
 	},
-	"include": ["vite.config.ts", "rsbuild.config.ts", "plugins"]
+	"include": ["rsbuild.config.ts", "plugins"]
 }
