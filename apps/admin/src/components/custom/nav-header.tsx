@@ -31,7 +31,7 @@ export function NavHeader() {
 
 	return (
 		<header className="sticky top-0 flex items-center justify-between h-12 p-3 shadow-sm border-b bg-sidebar text-sidebar-foreground">
-			<NavbarItem className="mr-1" isActive closeable={false} icon={<LayoutDashboard className="size-4" />} title="总览" />
+			<NavbarItem className="mr-2" isActive closeable={false} icon={<LayoutDashboard className="size-4" />} title="总览" />
 			<Navbar />
 			<div className="flex justify-end items-center space-x-2 ml-4">
 				<DropdownMenu>

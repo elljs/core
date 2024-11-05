@@ -15,70 +15,20 @@ import {
 } from "@/components/ui/sidebar";
 import constants from "@/constants";
 import {
-	Bot,
 	ChevronLeft,
-	ChevronRight,
-	FilePenLine,
-	Files,
-	LayoutDashboard,
-	Settings2,
-	User2
+	ChevronRight
 } from "lucide-react";
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const menus = [
-	{
-		name: "总览",
-		url: "/",
-		icon: LayoutDashboard,
-	},
-	{
-		name: "运营",
-		url: "/operation",
-		items: [
-			{
-				name: "客户管理",
-				url: "/operation/customer",
-				icon: User2,
-			},
-		],
-	},
-	{
-		name: "应用",
-		url: "/app",
-		items: [
-			{
-				name: "文本编辑器",
-				url: "/app/editor",
-				icon: FilePenLine,
-			},
-			{
-				name: "文件管理器",
-				url: "/app/file-manager",
-				icon: Files,
-			},
-			{
-				name: "聊天机器人",
-				url: "/app/bot",
-				icon: Bot,
-			},
-		],
-	},
-	{
-		name: "系统",
-		url: "/setting",
-		items: [
-			{
-				name: "平台设置",
-				url: "/setting/platform",
-				icon: Settings2,
-			},
-		],
-	},
-];
+interface MenuItem {
+	name: string;
+	url: string;
+	icon?: React.ReactNode;
+	items?: MenuItem[]
+}
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Sidebar> & { menus: MenuItem[] }) {
 	const { pathname } = useLocation();
 	const { open, toggleSidebar } = useSidebar();
 
@@ -111,13 +61,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 				</SidebarMenu>
 			</SidebarHeader>
 			<SidebarContent>
-				{menus.map(({ icon: Icon, ...item }) => {
+				{menus.map((item) => {
 					if (item.items && item.items.length > 0) {
 						return (
 							<SidebarGroup key={item.url}>
 								<SidebarGroupLabel>{item.name}</SidebarGroupLabel>
 								<SidebarMenu>
-									{item.items.map(({ icon: Icon, ...item }) => (
+									{item.items.map((item) => (
 										<SidebarMenuItem key={item.url}>
 											<SidebarMenuButton
 												className={
@@ -129,7 +79,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 												tooltip={item.name}
 											>
 												<Link to={item.url}>
-													{Icon && <Icon />}
+													{item.icon}
 													<span>{item.name}</span>
 												</Link>
 											</SidebarMenuButton>
@@ -153,7 +103,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 										tooltip={item.name}
 									>
 										<Link to={item.url}>
-											{Icon && <Icon />}
+											{item.icon}
 											<span>{item.name}</span>
 										</Link>
 									</SidebarMenuButton>

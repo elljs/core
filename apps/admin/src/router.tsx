@@ -1,4 +1,5 @@
 import MainLayout from "@/layouts/main";
+import SettingLayout from "@/layouts/setting";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
 				}),
 			},
 			{
-				path: "app",
+				path: "/app",
 				children: [
 					{
 						path: "editor",
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
 				],
 			},
 			{
-				path: "operation",
+				path: "/operation",
 				children: [
 					{
 						path: "customer",
@@ -53,10 +54,11 @@ const router = createBrowserRouter([
 				],
 			},
 			{
-				path: "setting",
+				path: "/setting",
+				element: <SettingLayout />,
 				children: [
 					{
-						path: "platform",
+						index: true,
 						lazy: async () => ({
 							Component: (await import("@/pages/setting/platform")).default,
 						}),
