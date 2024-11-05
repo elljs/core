@@ -1,5 +1,6 @@
 import { Logo } from "@/components/custom/logo";
 import { NavUser } from "@/components/custom/nav-user";
+import { NavLink, useNavbar } from "@/components/custom/navbar";
 import { Button } from "@/components/ui/button";
 import {
 	Sidebar,
@@ -19,18 +20,12 @@ import {
 	ChevronRight
 } from "lucide-react";
 import * as React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-interface MenuItem {
-	name: string;
-	url: string;
-	icon?: React.ReactNode;
-	items?: MenuItem[]
-}
-
-export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Sidebar> & { menus: MenuItem[] }) {
+export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Sidebar> & { menus: NavLink[] }) {
 	const { pathname } = useLocation();
 	const { open, toggleSidebar } = useSidebar();
+	const { navigate } = useNavbar();
 
 	return (
 		<Sidebar variant="sidebar" collapsible="icon" {...props}>
@@ -45,7 +40,7 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton size="lg" asChild>
-							<a href="/">
+							<div>
 								<Logo />
 								<div className="grid flex-1 text-left text-sm leading-tight">
 									<span className="truncate font-semibold">
@@ -55,19 +50,19 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 										{constants.description}
 									</span>
 								</div>
-							</a>
+							</div>
 						</SidebarMenuButton>
 					</SidebarMenuItem>
 				</SidebarMenu>
 			</SidebarHeader>
 			<SidebarContent>
-				{menus.map((item) => {
+				{menus.map(({ icon: Icon, ...item }) => {
 					if (item.items && item.items.length > 0) {
 						return (
 							<SidebarGroup key={item.url}>
 								<SidebarGroupLabel>{item.name}</SidebarGroupLabel>
 								<SidebarMenu>
-									{item.items.map((item) => (
+									{item.items.map(({ icon: Icon, ...item }) => (
 										<SidebarMenuItem key={item.url}>
 											<SidebarMenuButton
 												className={
@@ -78,10 +73,14 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 												asChild
 												tooltip={item.name}
 											>
-												<Link to={item.url}>
-													{item.icon}
+												<a className="cursor-pointer" onClick={() => navigate({
+													icon: Icon,
+													...item
+												})}>
+													{/* @ts-ignore */}
+													<Icon />
 													<span>{item.name}</span>
-												</Link>
+												</a>
 											</SidebarMenuButton>
 										</SidebarMenuItem>
 									))}
@@ -102,10 +101,14 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 										asChild
 										tooltip={item.name}
 									>
-										<Link to={item.url}>
-											{item.icon}
+										<a className="cursor-pointer" onClick={() => navigate({
+											icon: Icon,
+											...item
+										})}>
+											{/* @ts-ignore */}
+											<Icon />
 											<span>{item.name}</span>
-										</Link>
+										</a>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							</SidebarMenu>

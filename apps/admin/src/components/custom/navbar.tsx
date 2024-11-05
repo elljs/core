@@ -10,18 +10,33 @@ import {
 	ContextMenuSeparator,
 	ContextMenuTrigger,
 } from "@radix-ui/react-context-menu";
+import { useReactive } from "ahooks";
 import {
 	ArrowLeftToLine,
 	ArrowRightToLine,
 	Minus,
 	RefreshCw,
-	User,
 	X
 } from "lucide-react";
-import React from "react";
+import React, { useEffect, useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
+export interface NavLink {
+	name: string;
+	url: string;
+	icon?: JSX.Element;
+	items?: NavLink[]
+}
 
 type NavbarContext = {
+	defaultLink: NavLink;
 	current: string;
+	links: NavLink[];
+	navigate: (link: NavLink) => void;
+	refresh: (link: NavLink) => void;
+	refreshCurrent: () => void;
+	close: (link: NavLink) => void;
+	closeCurrent: () => void;
 	closeAll: () => void;
 };
 
@@ -37,17 +52,75 @@ function useNavbar() {
 }
 
 const NavbarProvider = ({
-	defaultNav,
+	defaultLink,
 	children,
 }: React.ComponentProps<"div"> & {
-	defaultNav?: string;
+	defaultLink: NavLink;
 }) => {
+	const state = useReactive<{
+		links: NavLink[]
+	}>({
+		links: [],
+	});
+	const nav = useNavigate();
+	const location = useLocation();
+	const current = useMemo(() => {
+		return location.pathname + location.search;
+	}, [location.pathname, location.search]);
+	// const { active, refresh, destroy, destroyAll, destroyOther, getCacheNodes } = useKeepAliveContext();
+	useEffect(() => {
+		state.links = defaultLink ? [defaultLink] : [];
+	}, [defaultLink]);
+
 	const contextValue = React.useMemo<NavbarContext>(
-		() => ({
-			current: defaultNav ?? "/",
-			closeAll: () => { },
-		}),
-		[defaultNav],
+		() => {
+			const navigate = (link: NavLink) => {
+				nav(link.url);
+				if (!state.links.some((l) => l.url === link.url)) {
+					state.links = [...state.links, link];
+				}
+			};
+
+			const refresh = (link: NavLink) => {
+
+			};
+
+			const refreshCurrent = () => {
+
+			};
+
+			const close = (link: NavLink) => {
+				const index = state.links.findIndex((l) => l.url === link.url);
+				const newLinks = [...state.links];
+				newLinks.splice(index, 1);
+				const nextLink = newLinks[index] ?? newLinks[newLinks.length - 1];
+				state.links = newLinks;
+				navigate(nextLink);
+			};
+
+			const closeCurrent = () => {
+				if (current === defaultLink.url) return;
+				close({ url: current } as NavLink);
+			};
+
+			const closeAll = () => {
+				state.links = [defaultLink];
+				navigate(defaultLink);
+			};
+
+			return ({
+				defaultLink,
+				current,
+				links: state.links,
+				navigate,
+				refresh,
+				refreshCurrent,
+				close,
+				closeCurrent,
+				closeAll
+			});
+		},
+		[nav, defaultLink, current, state.links],
 	);
 
 	return (
@@ -60,13 +133,32 @@ const NavbarProvider = ({
 NavbarProvider.displayName = "NavbarProvider";
 
 function Navbar() {
+	const { defaultLink, current, links, navigate, close } = useNavbar();
+	console.log(links);
+
 	return (
 		<ScrollArea className="w-full">
-			<nav className="flex flex-1 items-center space-x-1 h-12 overflow-auto">
-				<NavbarItem icon={<User className="size-4" />} title="客户管理" />
+			<nav className="flex flex-1 items-center space-x-2 h-12 overflow-auto">
+				{
+					links.map((link) => (
+						<NavbarItem
+							key={link.url}
+							icon={link.icon}
+							title={link.name}
+							isActive={current === link.url}
+							closeable={link.url !== defaultLink.url}
+							onClick={() => {
+								navigate(link);
+							}}
+							onClose={() => {
+								close(link)
+							}}
+						/>
+					))
+				}
 			</nav>
 			<ScrollBar orientation="horizontal" />
-		</ScrollArea>
+		</ScrollArea >
 	);
 }
 
@@ -74,28 +166,45 @@ Navbar.diplayName = "Navbar";
 
 function NavbarItem({
 	className,
-	icon,
+	icon: Icon,
 	title,
 	isActive = false,
 	closeable = true,
-}: React.HTMLAttributes<HTMLAnchorElement> & { icon: React.ReactNode, title: string, isActive?: boolean, closeable?: boolean }) {
+	onClick = () => { },
+	onClose = () => { },
+}: React.HTMLAttributes<HTMLAnchorElement> & {
+	icon?: JSX.Element,
+	title: string,
+	isActive?: boolean,
+	closeable?: boolean,
+	onClose?: () => void
+}) {
 	return (
 		<ContextMenu>
 			<ContextMenuTrigger>
 				<a
 					className={cn(
-						"flex items-center cursor-pointer space-x-2 px-2 py-1 rounded-md bg-background text-foreground hover:bg-accent hover:text-accent-foreground min-w-[80px]",
+						"flex items-center cursor-pointer space-x-2 px-2 py-1 rounded-md bg-background text-foreground hover:bg-accent hover:text-accent-foreground min-w-[60px]",
 						isActive && "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
 						className,
 					)}
+					onClick={onClick}
 				>
-					{icon}
+					{/* @ts-ignore */}
+					{Icon && <Icon className="size-4" />}
 					<span className="text-sm">{title}</span>
 					{closeable && (
 						<Button
-							className="size-4 hover:bg-primary hover:text-primary-foreground"
+							className={cn(
+								"size-4 hover:bg-primary hover:text-primary-foreground",
+								isActive && "hover:bg-background hover:text-foreground",
+							)}
 							size="icon"
 							variant="ghost"
+							onClick={(e) => {
+								e.stopPropagation();
+								onClose()
+							}}
 						>
 							<X />
 						</Button>

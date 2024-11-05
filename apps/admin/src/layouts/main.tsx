@@ -16,7 +16,7 @@ const menus = [
 	{
 		name: "总览",
 		url: "/",
-		icon: <LayoutDashboard />,
+		icon: LayoutDashboard,
 	},
 	{
 		name: "运营",
@@ -25,7 +25,7 @@ const menus = [
 			{
 				name: "客户管理",
 				url: "/operation/customer",
-				icon: <User2 />,
+				icon: User2,
 			},
 		],
 	},
@@ -36,39 +36,39 @@ const menus = [
 			{
 				name: "文本编辑器",
 				url: "/app/editor",
-				icon: <FilePenLine />,
+				icon: FilePenLine,
 			},
 			{
 				name: "文件管理器",
 				url: "/app/file-manager",
-				icon: <Files />,
+				icon: Files,
 			},
 			{
 				name: "聊天机器人",
 				url: "/app/bot",
-				icon: <Bot />,
+				icon: Bot,
 			},
 		],
 	},
 	{
 		name: "设置",
 		url: "/setting",
-		icon: <Settings2 />,
+		icon: Settings2,
 	},
 ];
 
 export default function MainLayout() {
 	return (
-		<SidebarProvider>
-			<AppSidebar menus={menus} />
-			<div className="w-full h-screen overflow-x-hidden bg-accent text-accent-foreground">
-				<NavbarProvider>
+		<NavbarProvider defaultLink={menus[0]}>
+			<SidebarProvider>
+				<AppSidebar menus={menus} />
+				<div className="w-full h-screen overflow-x-hidden bg-accent text-accent-foreground">
 					<NavHeader />
-				</NavbarProvider>
-				<main className="h-layout">
-					<KeepAliveRouteOutlet transition />
-				</main>
-			</div>
-		</SidebarProvider>
+					<main className="h-layout">
+						<KeepAliveRouteOutlet transition />
+					</main>
+				</div>
+			</SidebarProvider>
+		</NavbarProvider>
 	);
 }

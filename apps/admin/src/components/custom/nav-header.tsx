@@ -14,24 +14,23 @@ import { useFullscreen } from "ahooks";
 import {
 	Ellipsis,
 	Expand,
-	LayoutDashboard,
 	Minus,
 	Moon,
 	RefreshCw,
 	Shrink,
 	Sun,
-	X,
+	X
 } from "lucide-react";
-import { Navbar, NavbarItem } from "./navbar";
+import { Navbar, useNavbar } from "./navbar";
 import { useTheme } from "./theme-provider";
 
 export function NavHeader() {
 	const { theme, setTheme } = useTheme();
 	const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body);
+	const { refreshCurrent, closeCurrent, closeAll } = useNavbar();
 
 	return (
 		<header className="sticky top-0 flex items-center justify-between h-12 p-3 shadow-sm border-b bg-sidebar text-sidebar-foreground">
-			<NavbarItem className="mr-2" isActive closeable={false} icon={<LayoutDashboard className="size-4" />} title="总览" />
 			<Navbar />
 			<div className="flex justify-end items-center space-x-2 ml-4">
 				<DropdownMenu>
@@ -44,11 +43,11 @@ export function NavHeader() {
 						</Button>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent>
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={closeCurrent}>
 							<X className="size-4" />
 							<span>关闭当前标签页</span>
 						</DropdownMenuItem>
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={closeAll}>
 							<Minus className="size-4" />
 							<span>关闭全部标签页</span>
 						</DropdownMenuItem>
@@ -59,7 +58,7 @@ export function NavHeader() {
 						<Button
 							className="size-7 text-accent-foreground bg-accent hover:bg-primary hover:text-primary-foreground"
 							size="icon"
-							onClick={() => { }}
+							onClick={refreshCurrent}
 						>
 							<RefreshCw />
 						</Button>
