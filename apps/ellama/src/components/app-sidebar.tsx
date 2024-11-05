@@ -10,15 +10,11 @@ import {
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
-	SidebarMenuItem,
-	useSidebar
+	SidebarMenuItem
 } from "@/components/ui/sidebar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import {
 	Brain,
-	ChevronLeft,
-	ChevronRight,
-	Info,
 	Moon,
 	Settings,
 	Sun
@@ -46,11 +42,6 @@ const menus = [
 				name: "设置",
 				url: "/common/setting",
 				icon: Settings,
-			},
-			{
-				name: "关于",
-				url: "/common/about",
-				icon: Info,
 			},
 		],
 	},

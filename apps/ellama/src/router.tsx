@@ -21,12 +21,6 @@ const router = createBrowserRouter([
 							Component: (await import("@/pages/common/setting")).default,
 						}),
 					},
-					{
-						path: 'about',
-						lazy: async () => ({
-							Component: (await import("@/pages/common/about")).default,
-						}),
-					}
 				]
 			},
 		],
