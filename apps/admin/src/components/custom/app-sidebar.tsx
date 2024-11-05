@@ -77,8 +77,7 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 													icon: Icon,
 													...item
 												})}>
-													{/* @ts-ignore */}
-													<Icon />
+													{Icon && <Icon />}
 													<span>{item.name}</span>
 												</a>
 											</SidebarMenuButton>
@@ -105,8 +104,7 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 											icon: Icon,
 											...item
 										})}>
-											{/* @ts-ignore */}
-											<Icon />
+											{Icon && <Icon />}
 											<span>{item.name}</span>
 										</a>
 									</SidebarMenuButton>

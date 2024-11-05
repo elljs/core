@@ -1,6 +1,6 @@
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/custom/app-sidebar";
 import { NavHeader } from "@/components/custom/nav-header";
-import { NavbarProvider } from "@/components/custom/navbar";
+import { NavLink, NavbarProvider } from "@/components/custom/navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { KeepAliveRouteOutlet } from "keepalive-for-react";
 import {
@@ -12,7 +12,7 @@ import {
 	User2
 } from "lucide-react";
 
-const menus = [
+const menus: NavLink[] = [
 	{
 		name: "总览",
 		url: "/",

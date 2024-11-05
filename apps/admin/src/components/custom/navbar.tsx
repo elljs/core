@@ -14,6 +14,7 @@ import { useReactive } from "ahooks";
 import {
 	ArrowLeftToLine,
 	ArrowRightToLine,
+	LucideProps,
 	Minus,
 	RefreshCw,
 	X
@@ -24,7 +25,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export interface NavLink {
 	name: string;
 	url: string;
-	icon?: JSX.Element;
+	icon?: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
 	items?: NavLink[]
 }
 
@@ -173,7 +174,7 @@ function NavbarItem({
 	onClick = () => { },
 	onClose = () => { },
 }: React.HTMLAttributes<HTMLAnchorElement> & {
-	icon?: JSX.Element,
+	icon?: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
 	title: string,
 	isActive?: boolean,
 	closeable?: boolean,
@@ -190,7 +191,6 @@ function NavbarItem({
 					)}
 					onClick={onClick}
 				>
-					{/* @ts-ignore */}
 					{Icon && <Icon className="size-4" />}
 					<span className="text-sm">{title}</span>
 					{closeable && (

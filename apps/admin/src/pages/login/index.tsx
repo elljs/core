@@ -1,4 +1,4 @@
-import { LoginForm } from "@/components/custom/login-form";
+import { LoginForm } from "@/pages/login/login-form";
 import { Logo } from "@/components/custom/logo";
 import constants from "@/constants";
 
