@@ -1,6 +1,6 @@
-import { LoginForm } from "@/pages/login/login-form";
 import { Logo } from "@/components/custom/logo";
 import constants from "@/constants";
+import { LoginForm } from "./login-form";
 
 export default function Login() {
 	return (

@@ -11,6 +11,7 @@ import {
 	ContextMenuTrigger,
 } from "@radix-ui/react-context-menu";
 import { useReactive } from "ahooks";
+import { KeepAliveRef } from "keepalive-for-react";
 import {
 	ArrowLeftToLine,
 	ArrowRightToLine,
@@ -19,8 +20,8 @@ import {
 	RefreshCw,
 	X
 } from "lucide-react";
-import React, { useEffect, useMemo } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { MutableRefObject, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export interface NavLink {
 	name: string;
@@ -53,9 +54,13 @@ function useNavbar() {
 }
 
 const NavbarProvider = ({
+	aliveRef,
+	current,
 	defaultLink,
 	children,
 }: React.ComponentProps<"div"> & {
+	aliveRef: MutableRefObject<KeepAliveRef | undefined>,
+	current: string;
 	defaultLink: NavLink;
 }) => {
 	const state = useReactive<{
@@ -64,11 +69,7 @@ const NavbarProvider = ({
 		links: [],
 	});
 	const nav = useNavigate();
-	const location = useLocation();
-	const current = useMemo(() => {
-		return location.pathname + location.search;
-	}, [location.pathname, location.search]);
-	// const { active, refresh, destroy, destroyAll, destroyOther, getCacheNodes } = useKeepAliveContext();
+
 	useEffect(() => {
 		state.links = defaultLink ? [defaultLink] : [];
 	}, [defaultLink]);
@@ -83,11 +84,11 @@ const NavbarProvider = ({
 			};
 
 			const refresh = (link: NavLink) => {
-
+				aliveRef.current?.refresh(link.url);
 			};
 
 			const refreshCurrent = () => {
-
+				aliveRef.current?.refresh();
 			};
 
 			const close = (link: NavLink) => {
@@ -135,7 +136,6 @@ NavbarProvider.displayName = "NavbarProvider";
 
 function Navbar() {
 	const { defaultLink, current, links, navigate, close } = useNavbar();
-	console.log(links);
 
 	return (
 		<ScrollArea className="w-full">

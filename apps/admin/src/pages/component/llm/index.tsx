@@ -71,14 +71,14 @@ const actionIcons = [
 	{ icon: RefreshCcw, type: "Regenerate" },
 ];
 
-export default function AI() {
+export default function LLM() {
 	const state = useReactive({
 		model: "llama3.2",
 		modelOpen: false,
 	});
 
 	return (
-		<Page className="flex flex-col pb-4" header="聊天机器人">
+		<Page className="flex flex-col pb-4" header="大语言模型">
 			<Card className="flex flex-col flex-1 overflow-hidden">
 				<CardHeader className="flex flex-row justify-center items-center space-x-2 space-y-0">
 					<p className="text-sm text-muted-foreground">模型</p>
@@ -130,6 +130,11 @@ export default function AI() {
 							</Command>
 						</PopoverContent>
 					</Popover>
+					<span className="relative flex size-2 ml-2">
+						<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+						<span className="relative inline-flex rounded-full size-2 bg-green-500" />
+					</span>
+					<p className="text-sm text-muted-foreground">已连接</p>
 				</CardHeader>
 				<CardContent className="flex-1">
 					<ChatMessageList>
@@ -150,14 +155,6 @@ export default function AI() {
 														className="size-6"
 														key={type}
 														icon={<Icon className="size-3" />}
-														onClick={() =>
-															console.log(
-																"Action " +
-																type +
-																" clicked for message " +
-																index,
-															)
-														}
 													/>
 												))}
 											</div>

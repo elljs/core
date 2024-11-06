@@ -8,7 +8,6 @@
 		"build": "rsbuild build --env-dir ./env",
 		"preview": "rsbuild preview --env-dir ./env",
 		"clean": "rimraf dist && rimraf node_modules",
-		"deploy": "rimraf dist && pnpm run build && gh-pages -d dist",
 		"format": "pnpm biome format --write ."
 	},
 	"dependencies": {
@@ -72,7 +71,6 @@
 		"@types/react": "^18.3.11",
 		"@types/react-dom": "^18.3.1",
 		"autoprefixer": "^10.4.20",
-		"gh-pages": "^6.2.0",
 		"postcss": "^8.4.47",
 		"rimraf": "^6.0.1",
 		"tailwindcss": "^3.4.14",

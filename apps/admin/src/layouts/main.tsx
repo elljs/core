@@ -2,15 +2,17 @@ import { AppSidebar } from "@/components/custom/app-sidebar";
 import { NavHeader } from "@/components/custom/nav-header";
 import { NavLink, NavbarProvider } from "@/components/custom/navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { KeepAliveRouteOutlet } from "keepalive-for-react";
+import KeepAlive, { useKeepaliveRef } from "keepalive-for-react";
 import {
-	Bot,
+	Cpu,
 	FilePenLine,
 	Files,
 	LayoutDashboard,
 	Settings2,
 	User2
 } from "lucide-react";
+import { Suspense, useMemo } from "react";
+import { useLocation, useOutlet } from "react-router-dom";
 
 const menus: NavLink[] = [
 	{
@@ -19,34 +21,34 @@ const menus: NavLink[] = [
 		icon: LayoutDashboard,
 	},
 	{
-		name: "运营",
-		url: "/operation",
+		name: "区块",
+		url: "/block",
 		items: [
 			{
 				name: "客户管理",
-				url: "/operation/customer",
+				url: "/block/customer",
 				icon: User2,
 			},
 		],
 	},
 	{
-		name: "应用",
-		url: "/app",
+		name: "组件",
+		url: "/component",
 		items: [
 			{
 				name: "文本编辑器",
-				url: "/app/editor",
+				url: "/component/editor",
 				icon: FilePenLine,
 			},
 			{
 				name: "文件管理器",
-				url: "/app/file-manager",
+				url: "/component/file-manager",
 				icon: Files,
 			},
 			{
-				name: "聊天机器人",
-				url: "/app/bot",
-				icon: Bot,
+				name: "大语言模型",
+				url: "/component/llm",
+				icon: Cpu,
 			},
 		],
 	},
@@ -58,14 +60,26 @@ const menus: NavLink[] = [
 ];
 
 export default function MainLayout() {
+	const location = useLocation();
+	const aliveRef = useKeepaliveRef();
+	const outlet = useOutlet();
+
+	const currentCacheKey = useMemo(() => {
+		return location.pathname + location.search;
+	}, [location.pathname, location.search]);
+
 	return (
-		<NavbarProvider defaultLink={menus[0]}>
+		<NavbarProvider aliveRef={aliveRef} current={currentCacheKey} defaultLink={menus[0]}>
 			<SidebarProvider>
 				<AppSidebar menus={menus} />
 				<div className="w-full h-screen overflow-x-hidden bg-accent text-accent-foreground">
 					<NavHeader />
 					<main className="h-layout">
-						<KeepAliveRouteOutlet transition />
+						<KeepAlive transition aliveRef={aliveRef} activeCacheKey={currentCacheKey} max={18}>
+							<Suspense fallback={<div>Loading...</div>}>
+								{outlet}
+							</Suspense>
+						</KeepAlive>
 					</main>
 				</div>
 			</SidebarProvider>

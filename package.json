@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
-		"build": "pnpm --filter \"./packages/**\" run build",
+		"build": "pnpm --filter \"./apps/**\" run build",
 		"clean": "pnpm --filter=@elljs/* run clean",
 		"format": "pnpm biome format --write .",
 		"cs": "changeset"
@@ -12,7 +12,6 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.3",
 		"@changesets/cli": "^2.27.8",
-		"autocannon": "^7.15.0",
 		"commitizen": "^4.3.0",
 		"cz-conventional-changelog": "^3.3.0",
 		"rimraf": "^6.0.1"

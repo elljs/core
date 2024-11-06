@@ -11,10 +11,9 @@ const state = proxy<{ user: any }>({
 
 const actions = {
 	load: async () => {
-		let user = state.user;
+		const user = state.user;
 		return defer({ user });
 	},
-
 	login: async () => {
 		window.location.href = "/";
 	},
