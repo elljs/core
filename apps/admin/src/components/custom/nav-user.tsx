@@ -67,7 +67,7 @@ export function NavUser() {
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
-							<DropdownMenuItem onClick={() => nav("/setting/profile")}>
+							<DropdownMenuItem onClick={() => nav("/setting")}>
 								<User />
 								资料
 							</DropdownMenuItem>
