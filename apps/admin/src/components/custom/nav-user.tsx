@@ -1,4 +1,4 @@
-import { Bell, ChevronsUpDown, CreditCard, LogOut, User } from "lucide-react";
+import { Bell, ChevronsUpDown, LogOut, User } from "lucide-react";
 
 import { useModal } from "@/components/custom/modal-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -18,9 +18,11 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import globalModel from "@/models/global.model";
+import { useNavigate } from "react-router-dom";
 import { useSnapshot } from "valtio";
 
 export function NavUser() {
+	const nav = useNavigate();
 	const { user } = useSnapshot(globalModel.state);
 	const { alert, dialog } = useModal();
 	const { isMobile } = useSidebar();
@@ -65,13 +67,9 @@ export function NavUser() {
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
-							<DropdownMenuItem>
+							<DropdownMenuItem onClick={() => nav("/setting/profile")}>
 								<User />
 								资料
-							</DropdownMenuItem>
-							<DropdownMenuItem>
-								<CreditCard />
-								账单
 							</DropdownMenuItem>
 							<DropdownMenuItem
 								onClick={() =>

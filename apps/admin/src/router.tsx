@@ -1,5 +1,9 @@
 import MainLayout from "@/layouts/main";
 import SettingLayout from "@/layouts/setting";
+import GeneralError from "@/pages/errors/general-error";
+import MaintenanceError from "@/pages/errors/maintenance-error";
+import NotFoundError from "@/pages/errors/not-found-error";
+import UnauthorisedError from "@/pages/errors/unauthorised-error";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -60,13 +64,34 @@ const router = createBrowserRouter([
 					{
 						index: true,
 						lazy: async () => ({
-							Component: (await import("@/pages/setting/platform")).default,
+							Component: (await import("@/pages/setting/profile")).default,
+						}),
+					},
+					{
+						path: "system",
+						lazy: async () => ({
+							Component: (await import("@/pages/setting/system")).default,
+						}),
+					},
+					{
+						path: "appearance",
+						lazy: async () => ({
+							Component: (await import("@/pages/setting/appearance")).default,
 						}),
 					},
 				],
 			},
 		],
 	},
+
+	// Error routes
+	{ path: "/500", Component: GeneralError },
+	{ path: "/404", Component: NotFoundError },
+	{ path: "/503", Component: MaintenanceError },
+	{ path: "/401", Component: UnauthorisedError },
+
+	// Fallback 404 route
+	{ path: "*", Component: NotFoundError },
 ]);
 
 export default router;

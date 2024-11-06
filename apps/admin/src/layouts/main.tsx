@@ -72,6 +72,7 @@ function searchIcon(menus: NavLink[], link: NavLink): React.ReactNode | null {
 			}
 		}
 	}
+
 	return null;
 }
 
