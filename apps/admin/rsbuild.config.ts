@@ -22,7 +22,6 @@ export default defineConfig({
 		},
 	},
 	output: {
-		assetPrefix: "/admin/",
 		distPath: {
 			root: "dist",
 		},
