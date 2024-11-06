@@ -58,13 +58,13 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 				</SidebarMenu>
 			</SidebarHeader>
 			<SidebarContent>
-				{menus.map(({ icon: Icon, ...item }) => {
+				{menus.map((item) => {
 					if (item.items && item.items.length > 0) {
 						return (
 							<SidebarGroup key={item.url}>
 								<SidebarGroupLabel>{item.name}</SidebarGroupLabel>
 								<SidebarMenu>
-									{item.items.map(({ icon: Icon, ...item }) => (
+									{item.items.map((item) => (
 										<SidebarMenuItem key={item.url}>
 											<SidebarMenuButton
 												className={
@@ -75,11 +75,8 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 												asChild
 												tooltip={item.name}
 											>
-												<a className="cursor-pointer" onClick={() => navigate({
-													icon: Icon,
-													...item
-												})}>
-													{Icon && <Icon />}
+												<a className="cursor-pointer" onClick={() => navigate(item)}>
+													{item.icon}
 													<span>{item.name}</span>
 												</a>
 											</SidebarMenuButton>
@@ -102,11 +99,8 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 										asChild
 										tooltip={item.name}
 									>
-										<a className="cursor-pointer" onClick={() => navigate({
-											icon: Icon,
-											...item
-										})}>
-											{Icon && <Icon />}
+										<a className="cursor-pointer" onClick={() => navigate(item)}>
+											{item.icon}
 											<span>{item.name}</span>
 										</a>
 									</SidebarMenuButton>

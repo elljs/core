@@ -18,7 +18,7 @@ const menus: NavLink[] = [
 	{
 		name: "总览",
 		url: "/",
-		icon: LayoutDashboard,
+		icon: <LayoutDashboard />,
 	},
 	{
 		name: "区块",
@@ -27,7 +27,7 @@ const menus: NavLink[] = [
 			{
 				name: "客户管理",
 				url: "/block/customer",
-				icon: User2,
+				icon: <User2 />,
 			},
 		],
 	},
@@ -38,26 +38,42 @@ const menus: NavLink[] = [
 			{
 				name: "文本编辑器",
 				url: "/component/editor",
-				icon: FilePenLine,
+				icon: <FilePenLine />,
 			},
 			{
 				name: "文件管理器",
 				url: "/component/file-manager",
-				icon: Files,
+				icon: <Files />,
 			},
 			{
 				name: "大语言模型",
 				url: "/component/llm",
-				icon: Cpu,
+				icon: <Cpu />,
 			},
 		],
 	},
 	{
 		name: "设置",
 		url: "/setting",
-		icon: Settings2,
+		icon: <Settings2 />,
 	},
 ];
+
+function searchIcon(menus: NavLink[], link: NavLink): React.ReactNode | null {
+	for (const menu of menus) {
+		if (menu.url === link.url) {
+			return menu.icon;
+		}
+
+		if (menu.items && menu.items.length > 0) {
+			const icon = searchIcon(menu.items, link);
+			if (icon) {
+				return icon;
+			}
+		}
+	}
+	return null;
+}
 
 export default function MainLayout() {
 	const location = useLocation();
@@ -69,7 +85,13 @@ export default function MainLayout() {
 	}, [location.pathname, location.search]);
 
 	return (
-		<NavbarProvider aliveRef={aliveRef} current={currentCacheKey} defaultLink={menus[0]}>
+		<NavbarProvider
+			aliveRef={aliveRef}
+			current={currentCacheKey}
+			defaultLink={menus[0]}
+			getLinkIcon={(link) => {
+				return <span className="[&>svg]:size-4">{searchIcon(menus, link)}</span>;
+			}}>
 			<SidebarProvider>
 				<AppSidebar menus={menus} />
 				<div className="w-full h-screen overflow-x-hidden bg-accent text-accent-foreground">

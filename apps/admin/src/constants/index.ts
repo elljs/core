@@ -4,4 +4,5 @@ export default {
 	isDev,
 	name: "Ell Admin",
 	description: "Headless First 后台管理模板",
+	localStorageKeyPrefix: "ell",
 };
