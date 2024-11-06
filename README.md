@@ -25,7 +25,6 @@
 1. 克隆项目到本地：
    ```bash
    git clone git@github.com:elljs/core.git ell
-   cd ell/apps/admin
    ```
 
 2. 安装项目依赖：
@@ -34,6 +33,11 @@
    ```
 
 ### 开发模式
+
+进入工作目录：
+```bash
+cd ell/apps/admin
+```
 
 运行以下命令启动开发服务器：
 ```bash
