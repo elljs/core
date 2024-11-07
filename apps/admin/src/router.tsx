@@ -55,6 +55,12 @@ const router = createBrowserRouter([
 							Component: (await import("@/pages/component/llm")).default,
 						}),
 					},
+					{
+						path: "pricing",
+						lazy: async () => ({
+							Component: (await import("@/pages/component/pricing")).default,
+						}),
+					},
 				],
 			},
 			{

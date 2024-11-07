@@ -8,6 +8,7 @@ import {
 	FilePenLine,
 	Files,
 	LayoutDashboard,
+	Receipt,
 	Settings2,
 	User2
 } from "lucide-react";
@@ -49,6 +50,11 @@ const menus: NavLink[] = [
 				name: "大语言模型",
 				url: "/component/llm",
 				icon: <Cpu />,
+			},
+			{
+				name: "付费计划",
+				url: "/component/pricing",
+				icon: <Receipt />,
 			},
 		],
 	},
