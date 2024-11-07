@@ -11,7 +11,6 @@
 - **UI组件**：[ShadcnUI](https://ui.shadcn.com/)
 - **构建工具**：[Rsbuild](https://rsbuild.dev/)
 - **状态管理**：[Valtio](https://valtio.dev/)
-- **网络请求**：[Alova](https://alova.js.org/)
 - **授权认证**：[CASL](https://casl.js.org/)
 
 ## 安装运行
