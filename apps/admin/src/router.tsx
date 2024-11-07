@@ -3,7 +3,7 @@ import GeneralError from "@/pages/errors/general-error";
 import MaintenanceError from "@/pages/errors/maintenance-error";
 import NotFoundError from "@/pages/errors/not-found-error";
 import UnauthorisedError from "@/pages/errors/unauthorised-error";
-import { Cpu, FilePenLine, Files, LayoutDashboard, Receipt, Settings2, User2 } from "lucide-react";
+import { Cpu, FilePenLine, FolderTree, LayoutDashboard, Receipt, ReceiptText, Settings2, User2 } from "lucide-react";
 import { ReactNode } from "react";
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 
@@ -46,14 +46,6 @@ export const menus: RouteMenu[] = [
 				}),
 			},
 			{
-				path: "file-manager",
-				name: "文件管理器",
-				icon: <Files />,
-				lazy: async () => ({
-					Component: (await import("@/pages/component/file-manager")).default,
-				}),
-			},
-			{
 				path: "llm",
 				name: "大语言模型",
 				icon: <Cpu />,
@@ -69,6 +61,14 @@ export const menus: RouteMenu[] = [
 					Component: (await import("@/pages/component/pricing")).default,
 				}),
 			},
+			{
+				path: "file-manager",
+				name: "文件管理器",
+				icon: <FolderTree />,
+				lazy: async () => ({
+					Component: (await import("@/pages/component/file-manager")).default,
+				}),
+			}
 		],
 	},
 	{

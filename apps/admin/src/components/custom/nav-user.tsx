@@ -1,5 +1,3 @@
-import { Bell, ChevronsUpDown, LogOut, User } from "lucide-react";
-
 import { useModal } from "@/components/custom/modal-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -18,13 +16,14 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import globalModel from "@/models/global.model";
+import { ChevronsUpDown, LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useSnapshot } from "valtio";
 
 export function NavUser() {
 	const nav = useNavigate();
 	const { user } = useSnapshot(globalModel.state);
-	const { alert, dialog } = useModal();
+	const { alert } = useModal();
 	const { isMobile } = useSidebar();
 
 	return (
@@ -70,14 +69,6 @@ export function NavUser() {
 							<DropdownMenuItem onClick={() => nav("/setting")}>
 								<User />
 								资料
-							</DropdownMenuItem>
-							<DropdownMenuItem
-								onClick={() =>
-									dialog({ title: "暂未开放", description: "敬请期待" })
-								}
-							>
-								<Bell />
-								通知
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
