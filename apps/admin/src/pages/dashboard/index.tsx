@@ -1,6 +1,5 @@
 import { SparkAreaChart } from "@/components/custom/charts/spark-chart";
 import { Page } from "@/components/custom/page";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
 	Card,
 	CardContent,
@@ -13,6 +12,9 @@ import dayjs from "dayjs";
 import { Activity, BadgeDollarSign, Podcast, Wallet } from "lucide-react";
 import { Overview } from './components/overview';
 import { RecentSales } from './components/recent-sales';
+import { SalesProportion } from "./components/sales-proportion";
+import { Trend } from "./components/trend";
+import { Button } from "@/components/ui/button";
 
 const chartdata = [
 	{
@@ -45,7 +47,7 @@ const chartdata = [
 	},
 ];
 
-export default function Home() {
+export default function Dashboard() {
 
 	return (
 		<Page
@@ -56,7 +58,7 @@ export default function Home() {
 				</span>
 			}
 		>
-			<div className="space-y-4">
+			<div className="space-y-4 pb-4">
 				<div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4'>
 					<Card>
 						<CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
@@ -177,24 +179,43 @@ export default function Home() {
 						</CardContent>
 					</Card>
 				</div>
-				<div className='grid grid-cols-1 gap-4 lg:grid-cols-7'>
+				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
 					<Card className='col-span-1 lg:col-span-4'>
-						<CardHeader>
-							<CardTitle>总览</CardTitle>
+						<CardHeader className="flex flex-row items-center justify-between space-y-0">
+							<CardTitle className="text-lg">热门产品</CardTitle>
+							<Button className="text-xs" variant="secondary" size="sm">查看更多</Button>
 						</CardHeader>
-						<CardContent className='pl-2'>
-							<Overview />
+						<CardContent>
+							<Trend />
 						</CardContent>
 					</Card>
+					<Card className='col-span-1 lg:col-span-2'>
+						<CardHeader>
+							<CardTitle className="text-lg">销售占比</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<SalesProportion />
+						</CardContent>
+					</Card>
+				</div>
+				<div className='grid grid-cols-1 gap-4 lg:grid-cols-7'>
 					<Card className='col-span-1 lg:col-span-3'>
 						<CardHeader>
-							<CardTitle>近期销售</CardTitle>
+							<CardTitle className="text-lg">近期销售</CardTitle>
 							<CardDescription>
 								您这个月完成了265笔销售。
 							</CardDescription>
 						</CardHeader>
 						<CardContent>
 							<RecentSales />
+						</CardContent>
+					</Card>
+					<Card className='col-span-1 lg:col-span-4'>
+						<CardHeader>
+							<CardTitle className="text-lg">数据分析</CardTitle>
+						</CardHeader>
+						<CardContent className='pl-2'>
+							<Overview />
 						</CardContent>
 					</Card>
 				</div>

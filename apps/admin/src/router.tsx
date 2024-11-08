@@ -16,7 +16,7 @@ export const menus: RouteMenu[] = [
 		name: "总览",
 		icon: <LayoutDashboard />,
 		lazy: async () => ({
-			Component: (await import("@/pages/home")).default,
+			Component: (await import("@/pages/dashboard")).default,
 		}),
 	},
 	// {
