@@ -19,20 +19,20 @@ export const menus: RouteMenu[] = [
 			Component: (await import("@/pages/home")).default,
 		}),
 	},
-	{
-		path: "/block",
-		name: "区块",
-		children: [
-			{
-				path: "customer",
-				name: "客户管理",
-				icon: <User2 />,
-				lazy: async () => ({
-					Component: (await import("@/pages/block/customer")).default,
-				}),
-			},
-		],
-	},
+	// {
+	// 	path: "/block",
+	// 	name: "区块",
+	// 	children: [
+	// 		{
+	// 			path: "customer",
+	// 			name: "客户管理",
+	// 			icon: <User2 />,
+	// 			lazy: async () => ({
+	// 				Component: (await import("@/pages/block/customer")).default,
+	// 			}),
+	// 		},
+	// 	],
+	// },
 	{
 		path: "/component",
 		name: "组件",

@@ -1,21 +1,6 @@
-import { RouteMenu } from '@/router';
 import { ForcedSubject, MongoAbility, RawRuleOf, createMongoAbility } from '@casl/ability';
 import { createContextualCan } from '@casl/react';
-import { createContext, useMemo } from 'react';
-
-function getSubjects(menus: RouteMenu[]) {
-    const subjects: string[] = [];
-    for (const menu of menus) {
-        if (menu.children && menu.children.length > 0) {
-            subjects.push(...getSubjects(menu.children));
-        } else {
-            subjects.push(menu.path!);
-        }
-    }
-
-    return subjects;
-}
-
+import { createContext, useContext, useMemo } from 'react';
 
 export const actions = ['manage', 'create', 'read', 'update', 'delete'] as const;
 
@@ -26,7 +11,7 @@ export type Abilities = [
 export type AppAbility = MongoAbility<Abilities>;
 export const createAbility = (rules: RawRuleOf<AppAbility>[]) => createMongoAbility<AppAbility>(rules);
 
-export const AbilityContext = createContext<AppAbility>(null as unknown as AppAbility);
+export const AbilityContext = createContext<AppAbility>(createAbility([]));
 export const Can = createContextualCan(AbilityContext.Consumer);
 
 type AbilityProviderProps = {
@@ -43,3 +28,15 @@ export function AbilityProvider({ children, rules }: AbilityProviderProps) {
         </AbilityContext.Provider>
     );
 }
+
+export const useAbility = () => {
+    const context = useContext(AbilityContext);
+
+    if (context === undefined)
+        throw new Error("useAbility must be used within a AbilityProvider");
+
+    return {
+        can: (action: typeof actions[number], subject: string | ForcedSubject<Exclude<string, 'all'>>) => context.can(action, subject),
+        cannot: (action: typeof actions[number], subject: string | ForcedSubject<Exclude<string, 'all'>>) => context.cannot(action, subject),
+    };
+};

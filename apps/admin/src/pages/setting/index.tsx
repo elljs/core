@@ -6,6 +6,7 @@ import { MonitorCog, PaletteIcon, User2 } from "lucide-react";
 import SettingAppearance from './appearance';
 import SettingProfile from './profile';
 import SettingSystem from './system';
+import { Can, useAbility } from "@/components/custom/ability-provider";
 
 const items = [
 	{
@@ -26,8 +27,8 @@ const items = [
 ];
 
 export default function Setting() {
+	const { cannot } = useAbility();
 	const state = useReactive({ active: '/setting' });
-
 	return (
 		<Page header="设置">
 			<div className="flex flex-1 flex-col space-y-8 p-2 rounded-lg border md:space-y-2 md:overflow-hidden lg:flex-row lg:space-x-12 lg:space-y-0 bg-card">
@@ -45,7 +46,12 @@ export default function Setting() {
 									asChild
 									tooltip={item.name}
 								>
-									<a className="cursor-pointer" onClick={() => state.active = item.url}>
+									<a className="cursor-pointer" onClick={() => {
+										if (cannot("manage", item.url)) {
+											return;
+										}
+										state.active = item.url
+									}}>
 										{item.icon}
 										<span>{item.name}</span>
 									</a>
@@ -56,7 +62,9 @@ export default function Setting() {
 				</aside>
 				<div className="flex w-full p-2 md:overflow-y-hidden overflow-x-hidden">
 					{'/setting' === state.active && <SettingProfile />}
-					{'/setting/system' === state.active && <SettingSystem />}
+					<Can I="manage" a="/setting/system">
+						{'/setting/system' === state.active && <SettingSystem />}
+					</Can>
 					{'/setting/appearance' === state.active && <SettingAppearance />}
 				</div>
 			</div>

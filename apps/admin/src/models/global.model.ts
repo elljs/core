@@ -3,15 +3,20 @@ import { RawRuleOf } from '@casl/ability';
 import { defer } from "react-router-dom";
 import { proxy } from "valtio";
 
-const state = proxy<{ user: any, permissions: RawRuleOf<AppAbility>[] }>({
+interface UserInfo {
+	nickname: string;
+	email: string;
+	avatar?: string;
+}
+
+const state = proxy<{ user: UserInfo, permissions: RawRuleOf<AppAbility>[] }>({
 	user: {
-		name: "Roy Lin",
+		nickname: "Roy Lin",
 		email: "admin@elljs.com",
 		avatar: "https://avatars.githubusercontent.com/u/19965768?v=4",
 	},
 	permissions: [
-		{ action: 'read', subject: 'all' },
-		{ action: 'manage', subject: '/block/customer' }
+		{ action: 'manage', subject: 'all' },
 	]
 });
 
