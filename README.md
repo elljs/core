@@ -4,6 +4,8 @@
 
 Ell Admin 是一个基于 `ShadcnUI` 的多标签页 Headless First 后台管理模板。它集成了现代化的前端技术和设计，旨在提供一个高效、易用的后台管理系统模板。
 
+![preview](preview.png)
+
 ## 技术选型
 
 - **前端框架**：[React](https://react.dev/) - 一个用于构建用户界面的 JavaScript 库，提供高效的组件化开发体验。
