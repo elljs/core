@@ -9,7 +9,7 @@ Ell Admin 是一个基于 `ShadcnUI` 的多标签页 Headless First 后台管理
 - **前端框架**：[React](https://react.dev/) - 一个用于构建用户界面的 JavaScript 库，提供高效的组件化开发体验。
 - **路由系统**：[React Router](https://reactrouter.com/) - 一个功能强大的前端路由库，支持声明式路由配置和动态路由加载。
 - **UI组件**：[ShadcnUI](https://ui.shadcn.com/) - 一套高质量的 Headless UI 组件库，提供丰富的组件和自定义主题功能。
-- **构建工具**：[Rsbuild](https://rsbuild.dev/) - 一个基于Rust开发的高效构建工具，支持现代前端开发的最佳实践，如代码分割、树摇优化等。
+- **构建工具**：[Rsbuild](https://rsbuild.dev/) - 一个基于Rust开发的高效构建工具，支持现代前端开发的最佳实践。
 - **状态管理**：[Valtio](https://valtio.dev/) - 一个轻量级、易于使用的状态管理库，支持高效的跨组件状态共享。
 - **授权认证**：[CASL](https://casl.js.org/) - 一个功能强大的访问控制库，支持前后端同构的细粒度权限管理。
 
