@@ -37,7 +37,7 @@ function TrenCard({ username, email, image, name, volume, price }: { username: s
 export function Trend() {
 
     return (
-        <div className="flex space-x-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <TrenCard
                 username="Olivia Martin"
                 email="olivia.martin@elljs.com"
