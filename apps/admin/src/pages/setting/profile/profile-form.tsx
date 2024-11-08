@@ -25,6 +25,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 
 const profileFormSchema = z.object({
+	avatar: z.string().optional(),
 	nickname: z
 		.string({
 			required_error: "请输入您的昵称。",
@@ -87,6 +88,19 @@ export default function ProfileForm() {
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+				{/* <FormField
+					control={form.control}
+					name="avatar"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>头像</FormLabel>
+							<FormControl>
+
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/> */}
 				<FormField
 					control={form.control}
 					name="nickname"

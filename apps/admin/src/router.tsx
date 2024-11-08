@@ -3,7 +3,7 @@ import GeneralError from "@/pages/errors/general-error";
 import MaintenanceError from "@/pages/errors/maintenance-error";
 import NotFoundError from "@/pages/errors/not-found-error";
 import UnauthorisedError from "@/pages/errors/unauthorised-error";
-import { Cpu, FilePenLine, FolderTree, LayoutDashboard, Receipt, ReceiptText, Settings2, User2 } from "lucide-react";
+import { Cpu, FilePenLine, FolderTree, LayoutDashboard, Receipt, Settings2 } from "lucide-react";
 import { ReactNode } from "react";
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 

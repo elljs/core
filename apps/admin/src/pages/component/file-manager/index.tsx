@@ -71,7 +71,7 @@ const data = {
 export default function FileManager() {
 	return (
 		<Page className="flex flex-col pb-4" header="文件管理器">
-			<ResizablePanelGroup className="rounded-lg border shadow bg-card" direction="horizontal">
+			<ResizablePanelGroup className="rounded-lg border bg-card" direction="horizontal">
 				<ResizablePanel defaultSize={20} minSize={10}>
 					<ScrollArea className="h-full overflow-auto">
 						<SidebarGroup>
