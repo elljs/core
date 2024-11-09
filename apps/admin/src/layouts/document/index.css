@@ -4,7 +4,7 @@
     }
 
     .toc {
-        @apply h-layout fixed top-12 right-4 overflow-y-hidden p-4 box-border;
+        @apply max-w-[500px] h-layout fixed top-12 right-4 overflow-y-hidden p-4 box-border;
 
         a {
             @apply no-underline font-normal text-muted-foreground;
@@ -19,11 +19,11 @@
         }
 
         .toc-link-h1 {
-            @apply relative pl-4;
+            @apply relative;
         }
 
         .toc-link-h1::after {
-            @apply content-[''] absolute left-0 top-[10%] h-[80%] w-1 bg-primary;
+            @apply content-[''] absolute -left-4 top-[10%] h-[80%] w-1 bg-primary;
         }
 
         .toc-item {
