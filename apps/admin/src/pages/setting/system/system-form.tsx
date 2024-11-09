@@ -9,7 +9,7 @@ import {
 	FormDescription,
 	FormField,
 	FormItem,
-	FormLabel
+	FormLabel,
 } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
 
@@ -36,8 +36,7 @@ export function SystemForm() {
 		defaultValues,
 	});
 
-	function onSubmit(data: NotificationsFormValues) {
-	}
+	function onSubmit(data: NotificationsFormValues) {}
 
 	return (
 		<Form {...form}>
@@ -51,9 +50,7 @@ export function SystemForm() {
 							render={({ field }) => (
 								<FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
 									<div className="space-y-0.5">
-										<FormLabel className="text-base">
-											通讯邮件
-										</FormLabel>
+										<FormLabel className="text-base">通讯邮件</FormLabel>
 										<FormDescription>
 											接收有关您账户活动的电子邮件。
 										</FormDescription>
@@ -73,9 +70,7 @@ export function SystemForm() {
 							render={({ field }) => (
 								<FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
 									<div className="space-y-0.5">
-										<FormLabel className="text-base">
-											营销邮件
-										</FormLabel>
+										<FormLabel className="text-base">营销邮件</FormLabel>
 										<FormDescription>
 											接收有关新产品、新功能和更多内容的电子邮件。
 										</FormDescription>
@@ -95,9 +90,7 @@ export function SystemForm() {
 							render={({ field }) => (
 								<FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
 									<div className="space-y-0.5">
-										<FormLabel className="text-base">
-											社交邮件
-										</FormLabel>
+										<FormLabel className="text-base">社交邮件</FormLabel>
 										<FormDescription>
 											接收朋友请求、关注等邮件。
 										</FormDescription>
@@ -117,9 +110,7 @@ export function SystemForm() {
 							render={({ field }) => (
 								<FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
 									<div className="space-y-0.5">
-										<FormLabel className="text-base">
-											安全邮件
-										</FormLabel>
+										<FormLabel className="text-base">安全邮件</FormLabel>
 										<FormDescription>
 											接收有关您账户活动和安全的电子邮件。
 										</FormDescription>

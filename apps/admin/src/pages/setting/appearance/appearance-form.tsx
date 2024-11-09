@@ -48,9 +48,7 @@ export function AppearanceForm() {
 					render={({ field }) => (
 						<FormItem className="space-y-1">
 							<FormLabel>主题</FormLabel>
-							<FormDescription>
-								请选择您喜欢的主题
-							</FormDescription>
+							<FormDescription>请选择您喜欢的主题</FormDescription>
 							<FormMessage />
 							<RadioGroup
 								onValueChange={field.onChange}

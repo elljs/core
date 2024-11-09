@@ -44,9 +44,9 @@ const profileFormSchema = z.object({
 	bio: z
 		.string({
 			required_error: "请输入您的简介。",
-		}).max(160, {
-
-		}).min(4, {
+		})
+		.max(160, {})
+		.min(4, {
 			message: "简介必须至少4个字符。",
 		}),
 	urls: z
@@ -82,8 +82,7 @@ export default function ProfileForm() {
 		control: form.control,
 	});
 
-	function onSubmit(data: ProfileFormValues) {
-	}
+	function onSubmit(data: ProfileFormValues) {}
 
 	return (
 		<Form {...form}>
@@ -137,7 +136,10 @@ export default function ProfileForm() {
 							</Select>
 							<FormDescription>
 								您可以管理您账户中的已验证电子邮件地址。{" "}
-								<a className="underline" href="#">邮箱设置</a>.
+								<a className="underline" href="#">
+									邮箱设置
+								</a>
+								.
 							</FormDescription>
 							<FormMessage />
 						</FormItem>

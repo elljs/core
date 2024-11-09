@@ -14,13 +14,13 @@ import {
 	SidebarMenuBadge,
 	SidebarMenuButton,
 	SidebarMenuItem,
-	SidebarMenuSub
+	SidebarMenuSub,
 } from "@/components/ui/sidebar";
 import {
 	ResizableHandle,
 	ResizablePanel,
 	ResizablePanelGroup,
-} from "@/components/ui/resizable"
+} from "@/components/ui/resizable";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ComingSoon from "@/components/custom/coming-soon";
 
@@ -71,7 +71,10 @@ const data = {
 export default function FileManager() {
 	return (
 		<Page className="flex flex-col pb-4" header="文件管理器">
-			<ResizablePanelGroup className="rounded-lg border bg-card" direction="horizontal">
+			<ResizablePanelGroup
+				className="rounded-lg border bg-card"
+				direction="horizontal"
+			>
 				<ResizablePanel defaultSize={20} minSize={10}>
 					<ScrollArea className="h-full overflow-auto">
 						<SidebarGroup>
@@ -107,7 +110,7 @@ export default function FileManager() {
 					<ComingSoon />
 				</ResizablePanel>
 			</ResizablePanelGroup>
-		</Page >
+		</Page>
 	);
 }
 

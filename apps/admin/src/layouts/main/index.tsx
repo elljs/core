@@ -1,11 +1,14 @@
-import { AbilityProvider, AppAbility } from "@/components/custom/ability-provider";
+import {
+	AbilityProvider,
+	AppAbility,
+} from "@/components/custom/ability-provider";
 import { AppSidebar } from "@/components/custom/app-sidebar";
 import { NavHeader } from "@/components/custom/nav-header";
 import { NavLink, NavbarProvider } from "@/components/custom/navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import globalModel from "@/models/global.model";
 import { RouteMenu, menus } from "@/router";
-import { RawRuleOf } from '@casl/ability';
+import { RawRuleOf } from "@casl/ability";
 import KeepAlive, { useKeepaliveRef } from "keepalive-for-react";
 import { Suspense, useMemo } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
@@ -25,7 +28,7 @@ function getLinks(menus: RouteMenu[], parent?: RouteMenu) {
 		} else {
 			links.push({
 				name: menu.name,
-				url: parent ? [parent?.path, menu.path!].join('/') : menu.path!,
+				url: parent ? [parent?.path, menu.path!].join("/") : menu.path!,
 				icon: menu.icon,
 			});
 		}
@@ -72,17 +75,23 @@ export default function MainLayout() {
 				current={currentCacheKey}
 				defaultLink={links[0]}
 				getLinkIcon={(link) => {
-					return <span className="[&>svg]:size-4">{searchIcon(links, link)}</span>;
-				}}>
+					return (
+						<span className="[&>svg]:size-4">{searchIcon(links, link)}</span>
+					);
+				}}
+			>
 				<SidebarProvider>
 					<AppSidebar menus={links} />
 					<div className="w-full h-screen overflow-x-hidden bg-accent text-accent-foreground">
 						<NavHeader />
 						<main className="h-layout">
-							<KeepAlive transition aliveRef={aliveRef} activeCacheKey={currentCacheKey} max={18}>
-								<Suspense fallback={<div>Loading...</div>}>
-									{outlet}
-								</Suspense>
+							<KeepAlive
+								transition
+								aliveRef={aliveRef}
+								activeCacheKey={currentCacheKey}
+								max={18}
+							>
+								<Suspense fallback={<div>Loading...</div>}>{outlet}</Suspense>
 							</KeepAlive>
 						</main>
 					</div>

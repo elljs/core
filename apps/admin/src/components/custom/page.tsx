@@ -3,7 +3,7 @@ import React from "react";
 
 interface PageHeaderProps
 	extends React.HTMLAttributes<HTMLDivElement>,
-	React.PropsWithChildren { }
+		React.PropsWithChildren {}
 
 const PageHeader = ({ className, children }: PageHeaderProps) => {
 	return (
@@ -15,7 +15,7 @@ const PageHeader = ({ className, children }: PageHeaderProps) => {
 
 interface PageProps
 	extends React.HTMLAttributes<HTMLDivElement>,
-	React.PropsWithChildren {
+		React.PropsWithChildren {
 	header?: React.ReactNode;
 	extra?: React.ReactNode;
 }

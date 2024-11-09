@@ -1,37 +1,37 @@
 #document {
-    .active {
-        @apply !text-primary;
-    }
+	.active {
+		@apply !text-primary;
+	}
 
-    .toc {
-        @apply max-w-[500px] h-layout fixed top-12 right-4 overflow-y-hidden p-4 box-border;
+	.toc {
+		@apply max-w-[500px] h-layout fixed top-12 right-4 overflow-y-hidden p-4 box-border;
 
-        a {
-            @apply no-underline font-normal text-muted-foreground;
-        }
+		a {
+			@apply no-underline font-normal text-muted-foreground;
+		}
 
-        .toc-level {
-            @apply list-none mt-0;
-        }
+		.toc-level {
+			@apply list-none mt-0;
+		}
 
-        .toc-level-1 {
-            @apply max-h-full overflow-y-auto py-4 px-8 no-scrollbar rounded-lg;
-        }
+		.toc-level-1 {
+			@apply max-h-full overflow-y-auto py-4 px-8 no-scrollbar rounded-lg;
+		}
 
-        .toc-link-h1 {
-            @apply relative;
-        }
+		.toc-link-h1 {
+			@apply relative;
+		}
 
-        .toc-link-h1::after {
-            @apply content-[''] absolute -left-4 top-[10%] h-[80%] w-1 bg-primary;
-        }
+		.toc-link-h1::after {
+			@apply content-[''] absolute -left-4 top-[10%] h-[80%] w-1 bg-primary;
+		}
 
-        .toc-item {
-            @apply box-border my-0;
-        }
+		.toc-item {
+			@apply box-border my-0;
+		}
 
-        .toc-link {
-            @apply hover:text-foreground;
-        }
-    }
+		.toc-link {
+			@apply hover:text-foreground;
+		}
+	}
 }

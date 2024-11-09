@@ -19,7 +19,7 @@ import {
 	RefreshCw,
 	Shrink,
 	Sun,
-	X
+	X,
 } from "lucide-react";
 import { Navbar, useNavbar } from "./navbar";
 import { useTheme } from "./theme-provider";

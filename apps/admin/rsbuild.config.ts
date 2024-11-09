@@ -3,14 +3,11 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginMdx } from "@rsbuild/plugin-mdx";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { recmaCodeHike, remarkCodeHike } from "codehike/mdx";
-import rehypeSlug from 'rehype-slug';
-import rehypeToc from '@jsdevtools/rehype-toc';
+import rehypeSlug from "rehype-slug";
+import rehypeToc from "@jsdevtools/rehype-toc";
 
 const chConfig = {
-	components: { code: "Code" },
-	syntaxHighlighting: {
-		theme: "one-dark-pro",
-	},
+	components: { code: "CodeHike" },
 };
 
 export default defineConfig({
@@ -38,6 +35,7 @@ export default defineConfig({
 				rehypePlugins: [rehypeSlug, rehypeToc],
 				recmaPlugins: [[recmaCodeHike, chConfig]],
 				jsx: true,
+				providerImportSource: "@mdx-js/react",
 			},
 		}),
 		pluginReact(),

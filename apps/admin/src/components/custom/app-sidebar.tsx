@@ -15,16 +15,14 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import constants from "@/constants";
-import {
-	ChevronLeft,
-	ChevronRight,
-	Github,
-	Webhook
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Github, Webhook } from "lucide-react";
 import * as React from "react";
 import { useLocation } from "react-router-dom";
 
-export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Sidebar> & { menus: NavLink[] }) {
+export function AppSidebar({
+	menus,
+	...props
+}: React.ComponentProps<typeof Sidebar> & { menus: NavLink[] }) {
 	const { pathname } = useLocation();
 	const { open, toggleSidebar } = useSidebar();
 	const { navigate } = useNavbar();
@@ -75,7 +73,10 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 												asChild
 												tooltip={item.name}
 											>
-												<a className="cursor-pointer" onClick={() => navigate(item)}>
+												<a
+													className="cursor-pointer"
+													onClick={() => navigate(item)}
+												>
 													{item.icon}
 													<span>{item.name}</span>
 												</a>
@@ -99,7 +100,10 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 										asChild
 										tooltip={item.name}
 									>
-										<a className="cursor-pointer" onClick={() => navigate(item)}>
+										<a
+											className="cursor-pointer"
+											onClick={() => navigate(item)}
+										>
 											{item.icon}
 											<span>{item.name}</span>
 										</a>
@@ -112,22 +116,26 @@ export function AppSidebar({ menus, ...props }: React.ComponentProps<typeof Side
 				<SidebarGroup className="mt-auto">
 					<SidebarMenu>
 						<SidebarMenuItem>
-							<SidebarMenuButton
-								asChild
-								tooltip="HikeStack"
-							>
-								<a className="cursor-pointer" target="_blank" href="https://hikestack.github.io/official/" rel="noreferrer">
+							<SidebarMenuButton asChild tooltip="HikeStack">
+								<a
+									className="cursor-pointer"
+									target="_blank"
+									href="https://hikestack.github.io/official/"
+									rel="noreferrer"
+								>
 									<Webhook />
 									<span>HikeStack</span>
 								</a>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
 						<SidebarMenuItem>
-							<SidebarMenuButton
-								asChild
-								tooltip="GitHub"
-							>
-								<a className="cursor-pointer" target="_blank" href="https://github.com/elljs" rel="noreferrer">
+							<SidebarMenuButton asChild tooltip="GitHub">
+								<a
+									className="cursor-pointer"
+									target="_blank"
+									href="https://github.com/elljs"
+									rel="noreferrer"
+								>
 									<Github />
 									<span>GitHub</span>
 								</a>

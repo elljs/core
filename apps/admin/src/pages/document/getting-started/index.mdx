@@ -2,6 +2,26 @@
 
 在快速迭代的前端开发领域，Headless 组件作为一种新兴的开发模式，正逐渐受到越来越多开发者的青睐。本文将详细介绍Headless组件的概念、优势、应用场景以及主流库，帮助读者深入了解这一前沿技术。
 
+```tsx Button.tsx
+import {useButton} from 'react-aria';
+import {useRef} from 'react';
+
+function Button(props) {
+  let ref = useRef<HTMLButtonElement | null>(null);
+  // !className bg-secondary/30
+  let { buttonProps } = useButton(props, ref);
+  let { children } = props;
+
+  return (
+    <button {...buttonProps} ref={ref}>
+      {children}
+    </button> 
+  );
+}
+
+<Button onPress={() => alert('Button pressed!')}>Test</Button>
+```
+
 ## 一、Headless组件概述
 
 Headless组件，顾名思义，即“无头”组件，这里的“头”指的是组件的UI部分。Headless组件专注于提供组件的逻辑和功能，而不包含任何预设的UI样式。开发者可以根据自己的需求，自由地为这些组件添加样式和布局。
