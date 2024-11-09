@@ -18,8 +18,8 @@ function observeAnchor() {
             const tocLinkEl = document.querySelector(`.toc a[href='#${id}']`);
             if (!tocLinkEl) return;
             if (entry.isIntersecting) {
-                document.querySelectorAll(".toc a").forEach((e) => e.classList.remove("text-primary"));
-                tocLinkEl.classList.add("text-primary");
+                document.querySelectorAll(".toc a").forEach((e) => e.classList.remove("active"));
+                tocLinkEl.classList.add("active");
             }
         }
     }, {

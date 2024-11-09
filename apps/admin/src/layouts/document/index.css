@@ -1,9 +1,13 @@
 #document {
+    .active {
+        @apply !text-primary;
+    }
+
     .toc {
         @apply h-layout fixed top-12 right-4 overflow-y-hidden p-4 box-border;
 
         a {
-            @apply no-underline font-normal;
+            @apply no-underline font-normal text-muted-foreground;
         }
 
         .toc-level {
@@ -23,7 +27,7 @@
         }
 
         .toc-item {
-            @apply box-border;
+            @apply box-border my-0;
         }
 
         .toc-link {
