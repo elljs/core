@@ -49,7 +49,7 @@ export default function DocumentLayout() {
 		<article
 			ref={documentRef}
 			id="document"
-			className="prose p-4 min-w-full bg-card"
+			className="prose dark:prose-invert p-4 min-w-full bg-card"
 		>
 			<div className="py-4 mx-20 max-w-prose overflow-y-auto">
 				<MDXProvider components={components}>
