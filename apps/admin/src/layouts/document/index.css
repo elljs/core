@@ -1,0 +1,33 @@
+#document {
+    .toc {
+        @apply h-layout fixed top-12 right-4 overflow-y-hidden p-4 box-border;
+
+        a {
+            @apply no-underline font-normal;
+        }
+
+        .toc-level {
+            @apply list-none mt-0;
+        }
+
+        .toc-level-1 {
+            @apply max-h-full overflow-y-auto py-4 px-8 no-scrollbar rounded-lg;
+        }
+
+        .toc-link-h1 {
+            @apply relative pl-4;
+        }
+
+        .toc-link-h1::after {
+            @apply content-[''] absolute left-0 top-[10%] h-[80%] w-1 bg-primary;
+        }
+
+        .toc-item {
+            @apply box-border;
+        }
+
+        .toc-link {
+            @apply hover:text-foreground;
+        }
+    }
+}

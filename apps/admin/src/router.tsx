@@ -1,9 +1,10 @@
+import DocumentLayout from "@/layouts/document";
 import MainLayout from "@/layouts/main";
 import GeneralError from "@/pages/errors/general-error";
 import MaintenanceError from "@/pages/errors/maintenance-error";
 import NotFoundError from "@/pages/errors/not-found-error";
 import UnauthorisedError from "@/pages/errors/unauthorised-error";
-import { Cpu, FilePenLine, FolderTree, LayoutDashboard, Receipt, Settings2 } from "lucide-react";
+import { CirclePlay, Cpu, FilePenLine, FolderTree, LayoutDashboard, Receipt, Settings2 } from "lucide-react";
 import { ReactNode } from "react";
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 
@@ -33,6 +34,21 @@ export const menus: RouteMenu[] = [
 	// 		},
 	// 	],
 	// },
+	{
+		path: "/document",
+		name: "文档",
+		element: <DocumentLayout />,
+		children: [
+			{
+				path: "getting-started",
+				name: "快速开始",
+				icon: <CirclePlay />,
+				lazy: async () => ({
+					Component: (await import("@/pages/document/getting-started")).default,
+				}),
+			},
+		]
+	},
 	{
 		path: "/component",
 		name: "组件",

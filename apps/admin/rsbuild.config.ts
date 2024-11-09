@@ -3,6 +3,8 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginMdx } from "@rsbuild/plugin-mdx";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { recmaCodeHike, remarkCodeHike } from "codehike/mdx";
+import rehypeSlug from 'rehype-slug';
+import rehypeToc from '@jsdevtools/rehype-toc';
 
 const chConfig = {
 	components: { code: "Code" },
@@ -33,6 +35,7 @@ export default defineConfig({
 		pluginMdx({
 			mdxLoaderOptions: {
 				remarkPlugins: [[remarkCodeHike, chConfig]],
+				rehypePlugins: [rehypeSlug, rehypeToc],
 				recmaPlugins: [[recmaCodeHike, chConfig]],
 				jsx: true,
 			},
