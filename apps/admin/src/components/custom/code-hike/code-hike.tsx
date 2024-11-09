@@ -8,6 +8,7 @@ import { CopyButton } from "./copy-button";
 import { lineNumbersHandler } from "./line-numbers-handler";
 import { tooltipHandler } from "./tool-handler";
 import { wordWrapHandler } from "./word-wrap-handler";
+import { markHandler } from "./mark-handler";
 
 export function CodeHike({ codeblock }: { codeblock: RawCode }) {
 	const state = useReactive<{
@@ -39,6 +40,7 @@ export function CodeHike({ codeblock }: { codeblock: RawCode }) {
 				className="mt-0"
 				code={state.highlighted}
 				handlers={[
+					markHandler,
 					tooltipHandler,
 					calloutHandler,
 					classNameHandler,
