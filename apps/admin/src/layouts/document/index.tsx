@@ -26,7 +26,7 @@ function observeAnchor() {
         threshold: 1,
         rootMargin: "0px 0px -66%"
     });
-    const elToObserve = document.querySelectorAll("article :is(h1,h2,h3)")
+    const elToObserve = document.querySelectorAll("article :is(h1,h2,h3,h4,h5,h6)")
     elToObserve.forEach(el => observer.observe(el))
     return observer;
 }
@@ -41,8 +41,8 @@ export default function DocumentLayout() {
     }, [documentRef.current]);
 
     return (
-        <article ref={documentRef} id="document" className='prose p-4 min-w-full'>
-            <div className='p-8 bg-card shadow rounded-lg overflow-y-auto'>
+        <article ref={documentRef} id="document" className='prose p-4 min-w-full bg-card'>
+            <div className='py-4 mx-20 max-w-prose overflow-y-auto'>
                 <MDXProvider components={components}>
                     <Outlet />
                 </MDXProvider>
