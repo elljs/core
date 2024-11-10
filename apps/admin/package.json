@@ -11,6 +11,7 @@
 		"format": "pnpm biome format --write ."
 	},
 	"dependencies": {
+		"@authing/browser": "0.0.1-alpha3",
 		"@casl/ability": "^6.7.2",
 		"@casl/react": "^4.0.0",
 		"@hookform/resolvers": "^3.9.1",

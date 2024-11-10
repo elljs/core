@@ -11,6 +11,7 @@ import {
 	FolderTree,
 	LayoutDashboard,
 	Receipt,
+	ScanFace,
 	Settings2,
 	SquareFunction,
 } from "lucide-react";
@@ -106,6 +107,20 @@ export const menus: RouteMenu[] = [
 					Component: (await import("@/pages/component/openapi")).default,
 				})
 			}
+		],
+	},
+	{
+		path: "/pages",
+		name: "页面",
+		children: [
+			{
+				path: "authing",
+				name: "第三方登录",
+				icon: <ScanFace />,
+				lazy: async () => ({
+					Component: (await import("@/pages/auth/authing")).default,
+				}),
+			},
 		],
 	},
 	{
