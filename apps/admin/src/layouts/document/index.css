@@ -4,7 +4,7 @@
 	}
 
 	.toc {
-		@apply max-w-[500px] h-layout fixed top-12 right-4 overflow-y-hidden p-4 box-border;
+		@apply w-[400px] h-layout absolute top-0 right-0 overflow-y-hidden px-4 box-border;
 
 		a {
 			@apply no-underline font-normal text-muted-foreground;

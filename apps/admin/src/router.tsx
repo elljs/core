@@ -56,7 +56,7 @@ export const menus: RouteMenu[] = [
 				name: "快速开始",
 				icon: <CirclePlay />,
 				lazy: async () => ({
-					Component: (await import("@/pages/document/getting-started")).default,
+					Component: (await import("@/pages/document/getting-started/index.mdx")).default,
 				}),
 			},
 		],

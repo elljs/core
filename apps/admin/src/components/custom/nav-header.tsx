@@ -30,7 +30,7 @@ export function NavHeader() {
 	const { refreshCurrent, closeCurrent, closeAll } = useNavbar();
 
 	return (
-		<header className="sticky top-0 flex items-center justify-between h-12 p-3 shadow-sm border-b bg-sidebar text-sidebar-foreground">
+		<header className="sticky top-0 z-10 flex items-center justify-between h-12 p-3 shadow-sm border-b bg-sidebar text-sidebar-foreground">
 			<Navbar />
 			<div className="flex justify-end items-center space-x-2 ml-4">
 				<DropdownMenu>
