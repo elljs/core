@@ -1,11 +1,8 @@
-import { Page } from '@/components/custom/page';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Authing } from '@authing/browser';
 import type { LoginState } from '@authing/browser/dist/types/global';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-export default function AuthAuthing() {
+export default function AuthingProvider() {
 
     const sdk = useMemo(() => {
         return new Authing({
@@ -50,23 +47,12 @@ export default function AuthAuthing() {
     }, [getLoginState, sdk]);
 
     return (
-        <Page header="第三方登录">
-            <Card className="mx-auto mt-20 max-w-sm">
-                <CardHeader>
-                    <CardTitle className="flex items-center space-x-2 text-2xl">
-                        <img className='size-10 rounded-md' alt='authing' src="https://files.authing.co/authing-console/default-userpool-logo.ico" />
-                        <span>Authing</span>
-                    </CardTitle>
-                    <CardDescription>
-                        点击跳转到第三方登录页面
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <Button type="submit" className="w-full" onClick={login}>
-                        登录
-                    </Button>
-                </CardContent>
-            </Card>
-        </Page>
+        <div className='flex items-center space-x-3 py-3 px-4 cursor-pointer' onClick={login}>
+            <img className='size-8 rounded-lg' alt='authing' src="https://files.authing.co/authing-console/default-userpool-logo.ico" />
+            <div className='flex flex-col'>
+                <span>Authing</span>
+                <span className='text-sm text-muted-foreground'>全场景身份云</span>
+            </div>
+        </div>
     );
 }

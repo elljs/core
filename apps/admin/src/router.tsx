@@ -10,6 +10,7 @@ import {
 	FilePenLine,
 	FolderTree,
 	LayoutDashboard,
+	LayoutGrid,
 	Receipt,
 	ScanFace,
 	Settings2,
@@ -110,15 +111,15 @@ export const menus: RouteMenu[] = [
 		],
 	},
 	{
-		path: "/pages",
-		name: "页面",
+		path: "/app",
+		name: "集成",
 		children: [
 			{
-				path: "authing",
-				name: "第三方登录",
-				icon: <ScanFace />,
+				path: "integration",
+				name: "第三方应用",
+				icon: <LayoutGrid />,
 				lazy: async () => ({
-					Component: (await import("@/pages/auth/authing")).default,
+					Component: (await import("@/pages/app/integration")).default,
 				}),
 			},
 		],
