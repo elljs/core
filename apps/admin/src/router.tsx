@@ -1,10 +1,12 @@
 import DocumentLayout from "@/layouts/document";
+import AILayout from "@/layouts/ai";
 import MainLayout from "@/layouts/main";
 import GeneralError from "@/pages/errors/general-error";
 import MaintenanceError from "@/pages/errors/maintenance-error";
 import NotFoundError from "@/pages/errors/not-found-error";
 import UnauthorisedError from "@/pages/errors/unauthorised-error";
 import {
+	Bot,
 	CirclePlay,
 	Cpu,
 	FilePenLine,
@@ -49,6 +51,21 @@ export const menus: RouteMenu[] = [
 	// 		},
 	// 	],
 	// },
+	{
+		path: '/ai',
+		name: 'AI',
+		element: <AILayout />,
+		children: [
+			{
+				path: 'chat-bot',
+				name: '聊天机器人',
+				icon: <Bot />,
+				lazy: async () => ({
+					Component: (await import("@/pages/ai/bot")).default,
+				}),
+			}
+		]
+	},
 	{
 		path: "/document",
 		name: "文档",

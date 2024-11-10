@@ -47,7 +47,7 @@ export default function AuthingProvider() {
     }, [getLoginState, sdk]);
 
     return (
-        <div className='flex items-center space-x-3 py-3 px-4 hover:shadow-lg cursor-pointer' onClick={login}>
+        <div className='flex items-center space-x-3 py-3 px-4 h-18 hover:shadow-lg cursor-pointer' onClick={login}>
             <img className='size-8 rounded-lg' alt='authing' src="https://files.authing.co/authing-console/default-userpool-logo.ico" />
             <div className='flex flex-col'>
                 <span>Authing</span>
