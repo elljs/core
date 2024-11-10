@@ -12,6 +12,7 @@ import {
 	LayoutDashboard,
 	Receipt,
 	Settings2,
+	SquareFunction,
 } from "lucide-react";
 import { ReactNode } from "react";
 import { RouteObject, createBrowserRouter } from "react-router-dom";
@@ -97,6 +98,14 @@ export const menus: RouteMenu[] = [
 					Component: (await import("@/pages/component/file-manager")).default,
 				}),
 			},
+			{
+				path: 'openapi',
+				name: '接口文档',
+				icon: <SquareFunction />,
+				lazy: async () => ({
+					Component: (await import("@/pages/component/openapi")).default,
+				})
+			}
 		],
 	},
 	{
