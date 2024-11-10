@@ -1,7 +1,8 @@
 import { Page } from "@/components/custom/page";
 import { Card } from "@/components/ui/card";
-import AuthingProvider from "./authing";
-import OllamaProvider from "./ollama";
+import AuthingProvider from "./auth/authing";
+import OllamaProvider from "./llm/ollama";
+import OpenAIProvider from "./llm/openai";
 
 export default function Integrate() {
     return (
@@ -17,6 +18,7 @@ export default function Integrate() {
                     <div className="text-muted-foreground text-sm mb-2">大语言模型</div>
                     <div className="grid gap-4 sm:grid-cols-4 lg:grid-cols-8">
                         <Card><OllamaProvider /></Card>
+                        <Card><OpenAIProvider /></Card>
                     </div>
                 </div>
             </div>
