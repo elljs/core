@@ -53,7 +53,10 @@ export default function AuthAuthing() {
         <Page header="第三方登录">
             <Card className="mx-auto mt-20 max-w-sm">
                 <CardHeader>
-                    <CardTitle className="text-2xl">Authing</CardTitle>
+                    <CardTitle className="flex items-center space-x-2 text-2xl">
+                        <img className='size-10 rounded-md' alt='authing' src="https://files.authing.co/authing-console/default-userpool-logo.ico" />
+                        <span>Authing</span>
+                    </CardTitle>
                     <CardDescription>
                         点击跳转到第三方登录页面
                     </CardDescription>
