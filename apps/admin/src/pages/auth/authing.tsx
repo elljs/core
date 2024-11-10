@@ -1,7 +1,6 @@
 import { Page } from '@/components/custom/page';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
 import { Authing } from '@authing/browser';
 import type { LoginState } from '@authing/browser/dist/types/global';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -12,7 +11,8 @@ export default function AuthAuthing() {
         return new Authing({
             domain: 'https://ell.authing.cn',
             appId: '67304830a513b022f8aca838',
-            redirectUri: 'https://console.authing.cn/console/get-started/67304830a513b022f8aca838',
+            redirectUri: 'https://ell-qgb.pages.dev',
+            redirectToOriginalUri: true,
         });
     }, []);
 
