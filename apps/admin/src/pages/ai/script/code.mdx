@@ -1,0 +1,68 @@
+```ts
+import { v4 as uuid } from 'uuid';
+import { APIGatewayEvent, Context, Callback, Handler } from 'aws-lambda';
+import * as AWS from 'aws-sdk';
+ 
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const TABLE_NAME = process.env.TABLE_NAME || 't_user';
+
+interface User {
+  id: string;
+  name: string;
+  age: number;
+}
+
+// !code(1:23)
+const createUser: Handler = async (event: APIGatewayEvent, context: Context, callback: Callback) => {
+  const body = JSON.parse(event.body);
+  const params = {
+    TableName: TABLE_NAME,
+    Item: {
+      ...body,
+      id: uuid(),
+    },
+  };
+ 
+  try {
+    await dynamoDb.put(params).promise();
+    callback(null, {
+      statusCode: 201,
+      body: JSON.stringify(params.Item),
+    });
+  } catch (error) {
+    callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'Could not create user' }),
+    });
+  }
+};
+
+const getUser: Handler = async (event: APIGatewayEvent, context: Context, callback: Callback) => {
+  const params = {
+    TableName: TABLE_NAME,
+    Key: {
+      id: event.pathParameters.id,
+    },
+  };
+ 
+  try {
+    const data = await dynamoDb.get(params).promise();
+    if (!data.Item) {
+      callback(null, {
+        statusCode: 404,
+        body: JSON.stringify({ error: 'User not found' }),
+      });
+    } else {
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify(data.Item),
+      });
+    }
+  } catch (error) {
+    callback(null, {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Could not get user' }),
+    });
+  }
+};
+```

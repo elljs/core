@@ -1,6 +1,6 @@
 import { CodeHike } from "@/components/custom/code-hike/code-hike";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import {
-	Sidebar,
 	SidebarContent,
 	SidebarGroup,
 	SidebarHeader,
@@ -13,12 +13,10 @@ import {
 	SidebarRail
 } from "@/components/ui/sidebar";
 import { MDXProvider } from "@mdx-js/react";
+import { GalleryVerticalEnd } from "lucide-react";
 import * as React from "react";
 import { Outlet } from "react-router-dom";
 import "./index.css";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { GalleryVerticalEnd } from "lucide-react";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 /** @type {MDXComponents} */
 const components = {

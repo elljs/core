@@ -1,5 +1,5 @@
-import DocumentLayout from "@/layouts/document";
 import AILayout from "@/layouts/ai";
+import DocumentLayout from "@/layouts/document";
 import MainLayout from "@/layouts/main";
 import GeneralError from "@/pages/errors/general-error";
 import MaintenanceError from "@/pages/errors/maintenance-error";
@@ -13,6 +13,7 @@ import {
 	FolderTree,
 	LayoutDashboard,
 	LayoutGrid,
+	MessageSquareCode,
 	Receipt,
 	ScanFace,
 	Settings2,
@@ -56,6 +57,14 @@ export const menus: RouteMenu[] = [
 		name: 'AI',
 		element: <AILayout />,
 		children: [
+			{
+				path: 'script',
+				name: '自然语言工程',
+				icon: <MessageSquareCode />,
+				lazy: async () => ({
+					Component: (await import("@/pages/ai/script")).default,
+				}),
+			},
 			{
 				path: 'chat-bot',
 				name: '聊天机器人',

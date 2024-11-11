@@ -4,11 +4,14 @@ import { LoaderCircle } from "lucide-react";
 import { useEffect } from "react";
 import { calloutHandler } from "./callout-handler";
 import { classNameHandler } from "./class-name-handler";
+import { codeHandler } from "./code-handler";
 import { CopyButton } from "./copy-button";
+import { focusHandler } from "./focus-handler";
+import { hoverHandler } from "./hover-handler";
 import { lineNumbersHandler } from "./line-numbers-handler";
+import { markHandler } from "./mark-handler";
 import { tooltipHandler } from "./tool-handler";
 import { wordWrapHandler } from "./word-wrap-handler";
-import { markHandler } from "./mark-handler";
 
 export function CodeHike({ codeblock }: { codeblock: RawCode }) {
 	const state = useReactive<{
@@ -40,6 +43,9 @@ export function CodeHike({ codeblock }: { codeblock: RawCode }) {
 				className="mt-0"
 				code={state.highlighted}
 				handlers={[
+					codeHandler,
+					hoverHandler,
+					focusHandler,
 					markHandler,
 					tooltipHandler,
 					calloutHandler,
