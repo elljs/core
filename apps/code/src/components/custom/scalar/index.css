@@ -1,8 +1,0 @@
-.scalar-app {
-    --scalar-background-1: hsl(var(--card));
-    --refs-header-height: 3rem;
-
-    .darklight-reference {
-        display: none;
-    }
-}
