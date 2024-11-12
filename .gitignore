@@ -38,3 +38,4 @@ env/*
 
 apps/*
 !apps/admin/
+!apps/code/

@@ -1,0 +1,6 @@
+.dockview-theme-abyss {
+	--dv-active-sash-color: hsl(var(--primary));
+	.dv-pane-container {
+		@apply bg-secondary;
+	}
+}
