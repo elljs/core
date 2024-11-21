@@ -39,13 +39,7 @@ Ell Admin 是一个基于 `ShadcnUI` 的多标签页 Headless First 后台管理
 
 ### 开发模式
 
-1. **进入工作目录**：
-   ```bash
-   cd apps/admin
-   ```
-   切换到包含后台管理模板的子项目目录。
-
-2. **启动开发服务器**：
+**启动开发服务器**：
    ```bash
    pnpm dev
    ```

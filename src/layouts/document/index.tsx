@@ -204,7 +204,7 @@ export default function Document() {
 	return (
 		<div className="relative flex h-layout w-full justify-center bg-card overflow-y-hidden">
 			<aside className="flex flex-col justify-end w-[300px] px-4 pt-2 pb-20 box-border overflow-y-hidde">
-				<SidebarHeader>
+				{/* <SidebarHeader>
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<SidebarMenuButton size="lg" asChild>
@@ -247,7 +247,7 @@ export default function Document() {
 						</SidebarMenu>
 					</SidebarGroup>
 				</SidebarContent>
-				<SidebarRail />
+				<SidebarRail /> */}
 			</aside>
 			<main
 				id="document"

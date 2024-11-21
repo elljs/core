@@ -34,6 +34,10 @@ yarn-error.log*
 env/*
 **/env/**
 
+# Dist
+node_modules
+dist/
+
 .vscode
 
 apps/*

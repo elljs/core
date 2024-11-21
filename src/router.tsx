@@ -1,5 +1,6 @@
 import AILayout from "@/layouts/ai";
 import DocumentLayout from "@/layouts/document";
+import HomeLayout from "@/layouts/home";
 import MainLayout from "@/layouts/main";
 import GeneralError from "@/pages/errors/general-error";
 import MaintenanceError from "@/pages/errors/maintenance-error";
@@ -15,9 +16,8 @@ import {
 	LayoutGrid,
 	MessageSquareCode,
 	Receipt,
-	ScanFace,
 	Settings2,
-	SquareFunction,
+	SquareFunction
 } from "lucide-react";
 import { ReactNode } from "react";
 import { RouteObject, createBrowserRouter } from "react-router-dom";
@@ -31,29 +31,15 @@ export type RouteMenu = {
 export const menus: RouteMenu[] = [
 	{
 		index: true,
-		path: "/",
+		path: "/admin",
 		name: "总览",
 		icon: <LayoutDashboard />,
 		lazy: async () => ({
-			Component: (await import("@/pages/dashboard")).default,
+			Component: (await import("@/pages/admin/dashboard")).default,
 		}),
 	},
-	// {
-	// 	path: "/block",
-	// 	name: "区块",
-	// 	children: [
-	// 		{
-	// 			path: "customer",
-	// 			name: "客户管理",
-	// 			icon: <User2 />,
-	// 			lazy: async () => ({
-	// 				Component: (await import("@/pages/block/customer")).default,
-	// 			}),
-	// 		},
-	// 	],
-	// },
 	{
-		path: '/ai',
+		path: '/admin/ai',
 		name: 'AI',
 		element: <AILayout />,
 		children: [
@@ -62,7 +48,7 @@ export const menus: RouteMenu[] = [
 				name: '自然语言工程',
 				icon: <MessageSquareCode />,
 				lazy: async () => ({
-					Component: (await import("@/pages/ai/script")).default,
+					Component: (await import("@/pages/admin/ai/script")).default,
 				}),
 			},
 			{
@@ -70,28 +56,13 @@ export const menus: RouteMenu[] = [
 				name: '聊天机器人',
 				icon: <Bot />,
 				lazy: async () => ({
-					Component: (await import("@/pages/ai/bot")).default,
+					Component: (await import("@/pages/admin/ai/bot")).default,
 				}),
 			}
 		]
 	},
 	{
-		path: "/document",
-		name: "文档",
-		element: <DocumentLayout />,
-		children: [
-			{
-				path: "getting-started",
-				name: "快速开始",
-				icon: <CirclePlay />,
-				lazy: async () => ({
-					Component: (await import("@/pages/document/getting-started/index.mdx")).default,
-				}),
-			},
-		],
-	},
-	{
-		path: "/component",
+		path: "/admin/component",
 		name: "组件",
 		children: [
 			{
@@ -99,7 +70,7 @@ export const menus: RouteMenu[] = [
 				name: "文本编辑器",
 				icon: <FilePenLine />,
 				lazy: async () => ({
-					Component: (await import("@/pages/component/editor")).default,
+					Component: (await import("@/pages/admin/component/editor")).default,
 				}),
 			},
 			{
@@ -107,7 +78,7 @@ export const menus: RouteMenu[] = [
 				name: "大语言模型",
 				icon: <Cpu />,
 				lazy: async () => ({
-					Component: (await import("@/pages/component/llm")).default,
+					Component: (await import("@/pages/admin/component/llm")).default,
 				}),
 			},
 			{
@@ -115,7 +86,7 @@ export const menus: RouteMenu[] = [
 				name: "付费计划",
 				icon: <Receipt />,
 				lazy: async () => ({
-					Component: (await import("@/pages/component/pricing")).default,
+					Component: (await import("@/pages/admin/component/pricing")).default,
 				}),
 			},
 			{
@@ -123,7 +94,7 @@ export const menus: RouteMenu[] = [
 				name: "文件管理器",
 				icon: <FolderTree />,
 				lazy: async () => ({
-					Component: (await import("@/pages/component/file-manager")).default,
+					Component: (await import("@/pages/admin/component/file-manager")).default,
 				}),
 			},
 			{
@@ -131,13 +102,13 @@ export const menus: RouteMenu[] = [
 				name: '接口文档',
 				icon: <SquareFunction />,
 				lazy: async () => ({
-					Component: (await import("@/pages/component/openapi")).default,
+					Component: (await import("@/pages/admin/component/openapi")).default,
 				})
 			}
 		],
 	},
 	{
-		path: "/app",
+		path: "/admin/app",
 		name: "集成",
 		children: [
 			{
@@ -145,17 +116,17 @@ export const menus: RouteMenu[] = [
 				name: "第三方应用",
 				icon: <LayoutGrid />,
 				lazy: async () => ({
-					Component: (await import("@/pages/app/integration")).default,
+					Component: (await import("@/pages/admin/app/integration")).default,
 				}),
 			},
 		],
 	},
 	{
-		path: "/setting",
+		path: "/admin/setting",
 		name: "设置",
 		icon: <Settings2 />,
 		lazy: async () => ({
-			Component: (await import("@/pages/setting")).default,
+			Component: (await import("@/pages/admin/setting")).default,
 		}),
 	},
 ];
@@ -169,6 +140,33 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/",
+		element: <HomeLayout />,
+		children: [
+			{
+				index: true,
+				lazy: async () => ({
+					Component: (await import("@/pages/home")).default,
+				})
+			}
+		]
+	},
+	{
+		path: "/docs",
+		name: "文档",
+		element: <DocumentLayout />,
+		children: [
+			{
+				path: "getting-started",
+				name: "快速开始",
+				icon: <CirclePlay />,
+				lazy: async () => ({
+					Component: (await import("@/pages/docs/index.mdx")).default,
+				}),
+			},
+		],
+	},
+	{
+		path: "/admin",
 		element: <MainLayout />,
 		children: menus,
 	},
