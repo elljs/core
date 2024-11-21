@@ -156,7 +156,7 @@ const router = createBrowserRouter([
 		element: <DocumentLayout />,
 		children: [
 			{
-				path: "getting-started",
+				index: true,
 				name: "快速开始",
 				icon: <CirclePlay />,
 				lazy: async () => ({

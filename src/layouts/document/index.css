@@ -4,7 +4,7 @@
 	}
 
 	.toc {
-		@apply w-[400px] h-layout absolute top-0 right-0 overflow-y-hidden px-4 box-border;
+		@apply hidden w-[400px] h-layout absolute top-0 right-0 overflow-y-hidden px-4 box-border;
 
 		a {
 			@apply no-underline font-normal text-muted-foreground;
